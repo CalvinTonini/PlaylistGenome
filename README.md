@@ -1,2 +1,2 @@
 # PlaylistGenome
-A final project for CS51
+## Bianca Trombetta, Calvin Tonini, Chris Ramirez
