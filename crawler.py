@@ -2,6 +2,11 @@
 # https://github.com/plamere/spotipy
 # to install, type in command-line: pip install spotipy
 
+import pprint
+import sys
+import os
+import subprocess
+
 import spotipy
 
 # potentially useful spotipy features?
