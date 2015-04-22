@@ -1,12 +1,10 @@
 # utilizes spotipy, developed by Plamere, available at 
 # https://github.com/plamere/spotipy
 # to install, type in command-line: pip install spotipy
+
 import spotipy
 
-# ids: bccfinalproject userid (base 62 number code?)
-# output: dict
-
-# potentially useful spotipy features
+# potentially useful spotipy features?
 # client Module
 user_playlist_tracks(user, playlistid, fields, limit=100, offset=0)
 user_playlists(user, limit=50, offset=0) 
@@ -23,7 +21,9 @@ spotipy.util.prompt_for_user_token(username, scope=None, client_id=None, client_
 
 # given one user account, search through their public playlists for new 
 # usernames
-def find_users(user)
+user = 
+
+def get_users(user)
 
 # calls find_users, and goes through the ids to gather playlist data
 def gather_playlists(user)
@@ -32,4 +32,3 @@ def gather_playlists(user)
 # i.e. we reach our database goal or there are no more usernames to go through
 def crawler(user):
     while data limit reached and frontier not empty
-        
