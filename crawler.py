@@ -6,6 +6,16 @@ import spotipy
 # ids: bccfinalproject userid (base 62 number code?)
 # output: dict
 
+# potentially useful spotipy features
+# client Module
+user_playlist_tracks(user, playlistid, fields, limit=100, offset=0)
+user_playlists(user, limit=50, offset=0) 
+# oauth2 Module
+OAUTH_TOKEN_URL = 'https://accounts.spotify.com/api/token'
+get_access_token(code)
+# util Module
+spotipy.util.prompt_for_user_token(username, scope=None, client_id=None, client_secret=None, redirect_uri=None)
+
 # 1. user -> get all their playlists
 # 2.     if spotify playlist -> leave alone
 # 3.     if user playlist -> get playlist and all tracks, and move to next playlist
