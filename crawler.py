@@ -26,9 +26,15 @@ spotipy.util.prompt_for_user_token(username, scope=None, client_id=None, client_
 
 # given one user account, search through their public playlists for new 
 # usernames
-user = 
+user = bccfinalproject
+
+playlist = [show_tracks(results)]
 
 def get_users(user)
+    users = []
+    for each in playlist:
+        if each[type] = 'user':
+            users.append(each[uri])
 
 # calls find_users, and goes through the ids to gather playlist data
 def gather_playlists(user)
