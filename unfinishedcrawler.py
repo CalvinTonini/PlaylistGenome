@@ -56,9 +56,10 @@ if __name__ == '__main__':
         print output
         with open('playlists.csv', 'wb') as csvfile:
             outwrite = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            for playlist in playlists:
-                outwrite.writerow([playlist])
+            for playlist in output:
+                outwrite.writerow(playlist)
         print visited
         print len(output)
+
     else:
         print "Error: Can't get token for", username

@@ -1,6 +1,7 @@
 # will take a list of lists, where interior lists are playlists, and make a dict 
 
 import sys
+import csv
 
 if len(sys.argv) == 2:
     user_input = sys.arg(1)
@@ -11,7 +12,14 @@ else:
 output_graph = {}
 current_edge = {}
 
-for playlist in user_input:
+
+with open(user_input) as csvfile:
+    playlists = []
+    insheet = csv.DictReader(csvfile)
+    for row in insheet:
+        playlists.append(row)
+
+for playlist in playlists:
     for song in playlist:
         if song in output:
             continue
