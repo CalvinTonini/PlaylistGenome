@@ -1,4 +1,6 @@
 # crawls playlists
+# returns a list of lists, where the interior lists are all the track IDs
+# within each playlist
 
 import sys
 import os
@@ -9,7 +11,6 @@ import json
 frontier = []
 visited = []
 output = []
-maximum = 50
 
 def crawler():
     while len(frontier) > 0 and len(output) < maximum :
@@ -24,7 +25,7 @@ def crawler():
                     songs = sp.user_playlist(playlist_owner, playlist['id'], fields="tracks,next")
                     new_playlist = []
                     for song in songs['tracks']['items']:
-                        new_playlist.append(song['track']['id'])
+                        new_playlist.append(song['track']['name'])
                     output.append(new_playlist)
                     visited.append(current_user)
                 elif playlist_owner != 'spotify':
@@ -34,10 +35,15 @@ def crawler():
                         frontier.append(playlist_owner)
 
 if __name__ == '__main__':
-    if len(sys.argv) = 1:
+    if len(sys.argv) == 3:
         username = sys.argv[1]
+        try: 
+            maximum = int(sys.argv[2])
+        except ValueError:
+            print "please enter an integer!"
+            sys.exit()
     else:
-        print "usage: python unfinishedcrawler.py [username]"
+        print "usage: python unfinishedcrawler.py [username] [number]"
         sys.exit()
 
     token = util.prompt_for_user_token(username)

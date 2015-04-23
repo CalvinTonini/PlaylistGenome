@@ -30,10 +30,10 @@ user = bccfinalproject
 
 playlist = [show_tracks(results)]
 
-def get_users(user)
+def get_users(user):
     users = []
     for each in playlist:
-        if each[type] = 'user':
+        if each[type] == 'user':
             users.append(each[uri])
 
 # calls find_users, and goes through the ids to gather playlist data
