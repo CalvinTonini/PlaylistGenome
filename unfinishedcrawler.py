@@ -1,4 +1,4 @@
-# shows a user's playlists (need to be authenticated via oauth)
+# crawls playlists
 
 import sys
 import os
@@ -37,11 +37,10 @@ def crawler():
                         frontier.append(playlist_owner)
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
+    if len(sys.argv) = 1:
         username = sys.argv[1]
     else:
-        print "Whoops, need your username!"
-        print "usage: python user_playlists.py [username]"
+        print "usage: python unfinishedcrawler.py [username]"
         sys.exit()
 
     token = util.prompt_for_user_token(username)
