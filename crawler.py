@@ -12,7 +12,7 @@ import spotipy
 # potentially useful spotipy features?
 # client Module
 user_playlist_tracks(user, playlistid, fields, limit=100, offset=0)
-user_playlists(user, limit=50, offset=0) 
+user_playlists(user, limit=50, offset=0)
 # oauth2 Module
 OAUTH_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 get_access_token(code)
@@ -24,17 +24,19 @@ spotipy.util.prompt_for_user_token(username, scope=None, client_id=None, client_
 # 3.     if user playlist -> get playlist and all tracks, and move to next playlist
 # 4.     if other -> take data, and store that username on frontier
 
-# given one user account, search through their public playlists for new 
+# given one user account, search through their public playlists for new
 # usernames
-user = bccfinalproject
+user =
 
-playlist = [show_tracks(results)]
-
-def get_users(user)
+<<<<<<< HEAD
+def get_users(user):
     users = []
     for each in playlist:
-        if each[type] = 'user':
+        if each[type] == 'user':
             users.append(each[uri])
+=======
+def get_users(user)
+>>>>>>> c31e9513a6676b6f0336fa3feee01c713d49d7f7
 
 # calls find_users, and goes through the ids to gather playlist data
 def gather_playlists(user)
