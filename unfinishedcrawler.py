@@ -38,7 +38,7 @@ def crawler():
 if __name__ == '__main__':
     if len(sys.argv) == 3:
         username = sys.argv[1]
-        try: 
+        try:
             maximum = int(sys.argv[2])
         except ValueError:
             print "please enter an integer!"
@@ -53,6 +53,7 @@ if __name__ == '__main__':
         frontier.append(username)
         sp = spotipy.Spotify(auth=token)
         crawler()
-        print output
+        print visited
+        print len(output)
     else:
         print "Error: Can't get token for", username
