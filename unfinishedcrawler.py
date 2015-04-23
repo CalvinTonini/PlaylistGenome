@@ -38,7 +38,7 @@ def crawler():
 if __name__ == '__main__':
     if len(sys.argv) == 3:
         username = sys.argv[1]
-        try: 
+        try:
             maximum = int(sys.argv[2])
         except ValueError:
             print "please enter an integer!"
@@ -58,5 +58,7 @@ if __name__ == '__main__':
             outwrite = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             for playlist in playlists:
                 outwrite.writerow([playlist])
+        print visited
+        print len(output)
     else:
         print "Error: Can't get token for", username
