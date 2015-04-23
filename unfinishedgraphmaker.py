@@ -4,7 +4,7 @@ import sys
 import csv
 
 if len(sys.argv) == 2:
-    user_input = sys.arg(1)
+    user_input = sys.argv(1)
 else:
     print "Sorry, we need a set of playlists to go through"
     sys.exit()
@@ -24,10 +24,9 @@ for playlist in playlists:
         if song in output:
             continue
         else:
+            output_graph[song] = {}
             for other_song in playlist:
                 if other_song == song:
                     continue
                 else:
-                    current_playlist.append(other_song)
-            output["song"] = []
-            
+                    output_graph[song][other_song]= 1
