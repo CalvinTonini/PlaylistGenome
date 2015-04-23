@@ -29,16 +29,14 @@ def crawler():
                     output.append(new_playlist)
                     if current_user in visited:
                         continue
-                    else:
-                        visited.append(current_user)
+                    visited.append(current_user)
                 elif playlist_owner != 'spotify':
                     if playlist_owner in visited:
                         continue
-                    else:
-                        frontier.append(playlist_owner)
+                    frontier.append(playlist_owner)
 
 if __name__ == '__main__':
-    if len(sys.argv) = 1:
+    if len(sys.argv) > 1:
         username = sys.argv[1]
     else:
         print "usage: python unfinishedcrawler.py [username]"
