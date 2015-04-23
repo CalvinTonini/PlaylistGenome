@@ -1,4 +1,4 @@
-# utilizes spotipy, developed by Plamere, available at 
+# utilizes spotipy, developed by Plamere, available at
 # https://github.com/plamere/spotipy
 # to install, type in command-line: pip install spotipy
 

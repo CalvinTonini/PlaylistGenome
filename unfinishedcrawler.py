@@ -4,7 +4,7 @@ import sys
 import os
 import spotipy
 import spotipy.util as util
-import json
+import csv
 
 frontier = []
 visited = []
@@ -49,4 +49,9 @@ if __name__ == '__main__':
         sp = spotipy.Spotify(auth=token)
         crawler()
         print output
+        with open('playlists.csv', 'wb') as csvfile:
+            outwrite = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            for playlist in playlists:
+                outwrite.writerow([playlist])
+    else:
         print "Error: Can't get token for", username
