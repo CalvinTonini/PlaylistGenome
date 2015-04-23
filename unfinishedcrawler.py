@@ -24,9 +24,12 @@ def crawler():
                     songs = sp.user_playlist(playlist_owner, playlist['id'], fields="tracks,next")
                     new_playlist = []
                     for song in songs['tracks']['items']:
-                        new_playlist.append(song['track']['id'])
+                        new_playlist.append(song['track']['name'])
                     output.append(new_playlist)
-                    visited.append(current_user)
+                    if current_user in visited:
+                        continue
+                    else:
+                        visited.append(current_user)
                 elif playlist_owner != 'spotify':
                     if playlist_owner in visited:
                         continue
@@ -47,6 +50,7 @@ if __name__ == '__main__':
         frontier.append(username)
         sp = spotipy.Spotify(auth=token)
         crawler()
-        print output
+        print visited
+        print len(output)
     else:
         print "Can't get token for", username
