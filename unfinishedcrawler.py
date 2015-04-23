@@ -1,4 +1,6 @@
-# Crawls Playlists, starting from an authenticated user.
+# crawls playlists, starting from an authenticated user
+# returns a list of lists, where the interior lists are all the track IDs
+# within each playlist
 
 import sys
 import os
@@ -9,8 +11,6 @@ import csv
 frontier = []
 visited = []
 output = []
-# maximum number of playlists, checked when starting a new user
-maximum = 50
 
 def crawler():
     while len(frontier) > 0 and len(output) < maximum :
@@ -36,10 +36,15 @@ def crawler():
                     frontier.append(playlist_owner)
 
 if __name__ == '__main__':
-    if len(sys.argv) = 1:
+    if len(sys.argv) == 3:
         username = sys.argv[1]
+        try: 
+            maximum = int(sys.argv[2])
+        except ValueError:
+            print "please enter an integer!"
+            sys.exit()
     else:
-        print "usage: python unfinishedcrawler.py [username]"
+        print "usage: python unfinishedcrawler.py [username] [number]"
         sys.exit()
 
     token = util.prompt_for_user_token(username)
