@@ -36,7 +36,7 @@ def crawler():
                     frontier.append(playlist_owner)
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
+    if len(sys.argv) = 1:
         username = sys.argv[1]
     else:
         print "usage: python unfinishedcrawler.py [username]"
@@ -49,5 +49,4 @@ if __name__ == '__main__':
         sp = spotipy.Spotify(auth=token)
         crawler()
         print output
-    else:
         print "Error: Can't get token for", username
