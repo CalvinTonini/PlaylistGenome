@@ -22,12 +22,12 @@ A triple for loop
 # sample graph for testing
 testgraph = {
     'a': {
-        'b': 3,
+        'b': 0.5,
         'c': 1,
         'd': 1,
         },
     'b': {
-        'a': 3,
+        'a': 0.5,
         'c': 1
         },
     'c': {
@@ -64,12 +64,21 @@ def pathfinder(graph):
     dist = create_dist(graph)
     path = create_path(graph)
     songlist = create_songlist(graph)
-    for i, dval in enumerate(dist):
-        for j, dval in enumerate(dist):
+    for i, d_i in enumerate(dist):
+        for j, d_j in enumerate(dist):
             if songlist[j] in graph[songlist[i]]:
                 dist[i][j] = graph[songlist[i]][songlist[j]]
                 path[i][j] = songlist[j]
+    for i, d_i in enumerate(dist):
+        for j, d_j in enumerate(dist):
+            for k, d_k in enumerate(dist):
+                if i == j or i == k or j == k:
+                    continue
+                if dist[i][j] + dist[j][k] < dist[i][k]:
+                    dist[i][k] = dist[i][j] + dist[j][k]
+                    path[i][k] = path[i][j]
     print dist
     print path
 
 pathfinder(testgraph)
+
