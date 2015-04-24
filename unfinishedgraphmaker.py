@@ -3,14 +3,14 @@
 import sys
 import csv
 
-""" if len(sys.argv) == 2:
-    user_input = sys.argv(1)
+if len(sys.argv) == 2:
+    user_input = sys.argv[1]
 else:
     print "Sorry, we need a set of playlists to go through"
     sys.exit()
-"""
 
-user_input = [['a','b','c','d'],['d','e','f'],['a','d']]
+
+# user_input = [['a','b','c','d'],['d','e','f'],['a','d']]
 
 output_graph = {}
 current_edge = {}
