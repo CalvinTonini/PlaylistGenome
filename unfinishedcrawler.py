@@ -2,6 +2,8 @@
 # returns a list of lists, where the interior lists are all the track IDs
 # within each playlist
 
+# address unicodeencodeerror?"
+
 import sys
 import os
 import spotipy
@@ -56,11 +58,14 @@ if __name__ == '__main__':
         sp = spotipy.Spotify(auth=token)
         crawler()
         print output[0]
-        with open('playlists.csv', 'wb') as csvfile:
-            outwrite = csv.writer(csvfile)
-            for playlist in output:
-                outwrite.writerow(playlist)
-        csvfile.close()
+#         with open('playlists.csv', 'wb') as csvfile:
+#             outwrite = csv.writer(csvfile)
+#             for playlist in output:
+#                 outwrite.writerow(playlist)
+#         csvfile.close()
+        outfile = open('platlists.pyfile', wb)
+        pickle.dump(output, outfile)
+        outputfile.close()
         print visited
         print len(output)
 

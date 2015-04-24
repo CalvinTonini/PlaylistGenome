@@ -17,15 +17,19 @@ else:
 output_graph = {}
 current_edge = {}
 
-with open(user_input) as csvfile:
-    playlists = []
-    insheet = csv.reader(csvfile)
-    for row in insheet:
-        playlist = []
-        for song in row:
-            playlist.append(song)
-        playlists.append(playlist)
-csvfile.close()
+# with open(user_input) as csvfile:
+#     playlists = []
+#     insheet = csv.reader(csvfile)
+#     for row in insheet:
+#         playlist = []
+#         for song in row:
+#             playlist.append(song)
+#         playlists.append(playlist)
+# csvfile.close()
+
+picklefile = open(user_input, 'rb')
+playlists = pickle.load(picklefile)
+picklefile.close()
 
 for playlist in playlists:
     for song in playlist:

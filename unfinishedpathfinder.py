@@ -2,40 +2,41 @@
 # Input: graph dictionary and two nodes (s1 and s2)
 # Output: list of nodes, ordered on the shortest past from s1 to s2
 
-# sample graph for testing
-
 import collections
 import sys
 import pickle
 
-#if len(sys.argv) == 2:
-#    user_input = sys.argv[1]
-#else:
-#    print "usage: python unfinishedpathfinder.py [graph.csv]"
-#    sys.exit()
+if len(sys.argv) == 4:
+    user_input = sys.argv[1]
+    song1_input = sys.argv[2]
+    song2_input = sys.argv[3]
+else:
+    print "usage: python unfinishedpathfinder.py [graph.csv] [song 1] [song 2]"
+    sys.exit()
 
-#picklefile = open(user_input, 'rb')
-#user_graph = pickle.load(picklefile)
-#picklefile.close()
+picklefile = open(user_input, 'rb')
+user_graph = pickle.load(picklefile)
+picklefile.close()
 
-testgraph = {
-    'a': {
-        'b': 0.5,
-        'c': 1,
-        'd': 1,
-        },
-    'b': {
-        'a': 0.5,
-        'c': 1
-        },
-    'c': {
-        'a': 1,
-        'b': 1
-        },
-    'd': {
-        'a': 1
-        }
-}
+# sample graph for testing
+# testgraph = {
+#     'a': {
+#         'b': 0.5,
+#         'c': 1,
+#         'd': 1,
+#         },
+#     'b': {
+#         'a': 0.5,
+#         'c': 1
+#         },
+#     'c': {
+#         'a': 1,
+#         'b': 1
+#         },
+#     'd': {
+#         'a': 1
+#         }
+# }
 
 def create_dist(graph):
     dist = []
@@ -55,9 +56,10 @@ def create_songlist(graph):
         songlist.append(song)
     return songlist
 
-# for testing
-print create_songlist(testgraph)
-songlist = create_songlist(testgraph)
+songlist = create_songlist(user_graph)
+
+# for testing:
+# print create_songlist(user_graph)
 
 def pathfinder(graph):
     dist = create_dist(graph)
@@ -80,11 +82,9 @@ def pathfinder(graph):
     return f
 
 def generate_path(s1,s2):
-    g = pathfinder(testgraph)
+    g = pathfinder(user_graph)
     dist = g.dist
     path = g.path
-    print dist
-    print path
     if path[songlist.index(s1)][songlist.index(s2)] == "null":
         return []
     final_path = [s1]
@@ -93,5 +93,5 @@ def generate_path(s1,s2):
         final_path.append(s1)
     print final_path
 
-pathfinder(testgraph)
-generate_path('b','d')
+pathfinder(user_graph)
+generate_path(song1_input,song2_input)
