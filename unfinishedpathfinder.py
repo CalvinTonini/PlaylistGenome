@@ -8,15 +8,15 @@ import collections
 import sys
 import pickle
 
-if len(sys.argv) == 2:
-    user_input = sys.argv[1]
-else:
-    print "usage: python unfinishedpathfinder.py [graph.csv]"
-    sys.exit()
+#if len(sys.argv) == 2:
+#    user_input = sys.argv[1]
+#else:
+#    print "usage: python unfinishedpathfinder.py [graph.csv]"
+#    sys.exit()
 
-picklefile = open(user_input, 'rb')
-user_graph = pickle.load(picklefile)
-picklefile.close()
+#picklefile = open(user_input, 'rb')
+#user_graph = pickle.load(picklefile)
+#picklefile.close()
 
 testgraph = {
     'a': {
@@ -56,7 +56,7 @@ def create_songlist(graph):
     return songlist
 
 # for testing
-print create_songlist(user_graph)
+print create_songlist(testgraph)
 songlist = create_songlist(testgraph)
 
 def pathfinder(graph):
@@ -80,15 +80,18 @@ def pathfinder(graph):
     return f
 
 def generate_path(s1,s2):
-    g = pathfinder(graph)
+    g = pathfinder(testgraph)
     dist = g.dist
     path = g.path
+    print dist
+    print path
     if path[songlist.index(s1)][songlist.index(s2)] == "null":
         return []
     final_path = [s1]
-    while songlist[i] != songlist[j]:
-        songlist[i] = path[i][j]
-        final_path.append[songlist[i]]
-    return final_path
+    while s1 != s2:
+        s1 = path[songlist.index(s1)][songlist.index(s2)]
+        final_path.append(s1)
+    print final_path
 
 pathfinder(testgraph)
+generate_path('b','d')
