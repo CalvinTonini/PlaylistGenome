@@ -2,24 +2,17 @@
 # Input: graph dictionary and two nodes (s1 and s2)
 # Output: list of nodes, ordered on the shortest past from s1 to s2
 
-"""Starts with: a weighted graph and two nodes to find the path between them
-Return a list of nodes
-
-graph = {
-    song: {edge: weight}
-    }    
-    
-graph[song] = {edge: weight}
-graph[song][edge] = weight
-
-Structure:
-A triple for loop
-    For each node a
-        Looks at every node b
-            And node c
-                if the distance from a to b to c is less than the distance from                 a to c directly, update the distance from a to c with the                       distance from a to b to c. Also update the Shortest Path Tree                     that will be returned"""
-
 # sample graph for testing
+
+import collections
+import sys
+
+#if len(sys.argv) == 2:
+#    user_input = sys.argv[1]
+#else:
+#    print "usage: python unfinishedpathfinder.py [graph.csv]"
+#    sys.exit()
+
 testgraph = {
     'a': {
         'b': 0.5,
@@ -59,11 +52,11 @@ def create_songlist(graph):
 
 # for testing
 print create_songlist(testgraph)
+songlist = create_songlist(testgraph)
 
 def pathfinder(graph):
     dist = create_dist(graph)
     path = create_path(graph)
-    songlist = create_songlist(graph)
     for i, d_i in enumerate(dist):
         for j, d_j in enumerate(dist):
             if songlist[j] in graph[songlist[i]]:
@@ -77,8 +70,20 @@ def pathfinder(graph):
                 if dist[i][j] + dist[j][k] < dist[i][k]:
                     dist[i][k] = dist[i][j] + dist[j][k]
                     path[i][k] = path[i][j]
-    print dist
-    print path
+    finder = collections.namedtuple('finder',['dist','path'])
+    f = finder(dist,path)
+    return f
+
+def generate_path(s1,s2):
+    g = pathfinder(graph)
+    dist = g.dist
+    path = g.path
+    if path[songlist.index(s1)][songlist.index(s2)] == "null":
+        return []
+    final_path = [s1]
+    while songlist[i] != songlist[j]:
+        songlist[i] = path[i][j]
+        final_path.append[songlist[i]]
+    return final_path
 
 pathfinder(testgraph)
-
