@@ -1,7 +1,8 @@
-# will take a list of lists, where interior lists are playlists, and make a dict 
+# will take a list of lists, where interior lists are playlists, and make a dict
 
 import sys
 import csv
+import json
 
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
@@ -35,7 +36,7 @@ for playlist in playlists:
                     new_v = (1.0/new_v) + 1
                     new_v = 1.0/new_v
                     output_graph[song][other_song] = new_v
-                else: 
+                else:
                     output_graph[song][other_song] = 1.0
         else:
             output_graph[song] = {}
@@ -44,4 +45,5 @@ for playlist in playlists:
                     continue
                 else:
                     output_graph[song][other_song] = 1.0
-print output_graph
+# print output_graph
+print json.dumps(output_graph, sort_keys=True, indent=4, separators=(',', ': '))
