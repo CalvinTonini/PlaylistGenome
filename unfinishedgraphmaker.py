@@ -15,12 +15,14 @@ user_input = [['a','b','c','d'],['d','e','f'],['a','d']]
 output_graph = {}
 current_edge = {}
 
-
 with open(user_input) as csvfile:
     playlists = []
-    insheet = csv.DictReader(csvfile)
+    insheet = csv.reader(csvfile)
     for row in insheet:
-        playlists.append(row)
+        playlist = []
+        for song in row:
+            playlist.append(song)
+        playlists.append(playlist)
 
 for playlist in playlists:
     for song in playlist:
