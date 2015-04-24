@@ -6,12 +6,10 @@ import collections
 import sys
 import pickle
 
-if len(sys.argv) == 4:
+if len(sys.argv) == 2:
     user_input = sys.argv[1]
-    song1_input = sys.argv[2]
-    song2_input = sys.argv[3]
 else:
-    print "usage: python unfinishedpathfinder.py [graph.csv] [song 1] [song 2]"
+    print "usage: python unfinishedpathfinder.py [graph.csv]"
     sys.exit()
 
 picklefile = open(user_input, 'rb')
@@ -56,8 +54,6 @@ def create_songlist(graph):
         songlist.append(song)
     return songlist
 
-songlist = create_songlist(user_graph)
-
 # for testing:
 # print create_songlist(user_graph)
 
@@ -93,8 +89,17 @@ def generate_path(s1,s2):
         final_path.append(s1)
     print final_path
 
-f = pathfinder(user_graph)
+songlist = create_songlist(user_graph)
+h = pathfinder(user_graph)
+h1 = h.dist
+h2 = h.path
 
-output_file = open('path.pyfile', 'wb')
-pickle.dump(f, output_file)
+output_file = open('dist.pyfile', 'wb')
+pickle.dump(h1, output_file)
+output_file.close()
+output_file = open('path.pyfile','wb')
+pickle.dump(h2, output_file)
+output_file.close()
+output_file = open('songlist.pyfile','wb')
+pickle.dump(songlist, output_file)
 output_file.close()

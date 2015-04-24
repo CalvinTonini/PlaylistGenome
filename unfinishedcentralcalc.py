@@ -1,23 +1,26 @@
 import sys
 import pickle
 
-picklefile = open("path.pyfile", 'rb')
-f = pickle.load(picklefile)
+picklefile = open("dist.pyfile", 'rb')
+dist = pickle.load(picklefile)
+picklefile.close()
+picklefile = open("songlist.pyfile", 'rb')
+songlist = pickle.load(picklefile)
 picklefile.close()
 
-if len(sys.argv) != 1:
-    print "usage: python unfinishedcentralcalc.py [dist.py] [path.py]"
+
+if len(sys.argv) != 3:
+    print "usage: python unfinishedcentralcalc.py dist.pyfile songlist.pyfile"
     sys.exit()
 
 centrality = [0.0] * len(dist)
 
-songlist = []
-for song in f.dist:
-    songlist.append(song)
-
 for value in centrality:
-    for i, song in enumerate(f.dist):
-        for edge in f.dist[song]:
-            value += f.dist[song][edge]
+    for i, song in enumerate(dist):
+        new_value = 0.0
+        for j, edge in enumerate(dist[i]):
+            new_value = new_value + dist[i][j]
+        centrality[i] = (1.0/new_value)
 
-print max(centrality)
+thing = centrality.index(max(centrality))
+print songlist[thing]
