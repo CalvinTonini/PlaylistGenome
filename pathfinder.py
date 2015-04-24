@@ -49,10 +49,7 @@ def create_path(graph):
     path = []
     for i in range(len(graph)):
         path.append(["null"] * (len(graph)))
-    print path
-    
-create_dist(testgraph)
-create_path(testgraph)
+    return path
 
 def create_songlist(graph):
     songlist = []
@@ -65,11 +62,14 @@ print create_songlist(testgraph)
 
 def pathfinder(graph):
     dist = create_dist(graph)
+    path = create_path(graph)
     songlist = create_songlist(graph)
     for i, dval in enumerate(dist):
         for j, dval in enumerate(dist):
             if songlist[j] in graph[songlist[i]]:
                 dist[i][j] = graph[songlist[i]][songlist[j]]
+                path[i][j] = songlist[j]
     print dist
+    print path
 
 pathfinder(testgraph)
