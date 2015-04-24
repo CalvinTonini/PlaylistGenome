@@ -13,13 +13,15 @@ visited = []
 output = []
 
 def crawler():
-    while len(frontier) > 0 and len(output) < maximum :
+    while len(frontier) > 0 and len(output) < maximum:
         current_user = frontier.pop()
         if current_user in visited:
             continue
         else:
             playlists = sp.user_playlists(current_user)
             for playlist in playlists['items']:
+                if len(output) >= maximum:
+                    continue
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
                     songs = sp.user_playlist_tracks(playlist_owner, playlist['id'], fields="items")
