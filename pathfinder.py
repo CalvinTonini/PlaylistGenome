@@ -6,11 +6,11 @@
 Return a list of nodes
 
 graph = {
-    song: {edges: weights}
+    song: {edge: weight}
     }    
     
-graph[song] = {edges: weights}
-graph[song][edges] = weights
+graph[song] = {edge: weight}
+graph[song][edge] = weight
 
 Structure:
 A triple for loop
@@ -19,10 +19,12 @@ A triple for loop
             And node c
                 if the distance from a to b to c is less than the distance from                 a to c directly, update the distance from a to c with the                       distance from a to b to c. Also update the Shortest Path Tree                     that will be returned"""
 
+# sample graph for testing
 testgraph = {
     'a': {
         'b': 3,
-        'c': 1
+        'c': 1,
+        'd': 1,
         },
     'b': {
         'a': 3,
@@ -31,21 +33,43 @@ testgraph = {
     'c': {
         'a': 1,
         'b': 1
-    }
+        },
+    'd': {
+        'a': 1
+        }    
 }
 
 def create_dist(graph):
     dist = []
     for i in range(len(graph)):
         dist.append([float("inf")] * (len(graph)))
-    print dist
+    return dist
 
-def create_next(graph):
-    dist = []
+def create_path(graph):
+    path = []
     for i in range(len(graph)):
-        dist.append(["null"] * (len(graph)))
-    print dist
-    
-create_dist(testgraph)
-create_next(testgraph)
+        path.append(["null"] * (len(graph)))
+    return path
 
+def create_songlist(graph):
+    songlist = []
+    for song in testgraph:
+        songlist.append(song)
+    return songlist
+
+# for testing
+print create_songlist(testgraph)
+
+def pathfinder(graph):
+    dist = create_dist(graph)
+    path = create_path(graph)
+    songlist = create_songlist(graph)
+    for i, dval in enumerate(dist):
+        for j, dval in enumerate(dist):
+            if songlist[j] in graph[songlist[i]]:
+                dist[i][j] = graph[songlist[i]][songlist[j]]
+                path[i][j] = songlist[j]
+    print dist
+    print path
+
+pathfinder(testgraph)
