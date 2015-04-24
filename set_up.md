@@ -1,7 +1,7 @@
-set-up instructions:
+# set-up instructions:
 
-pip install spotipy
-export environment variables to authenticate account
-python unfinishedcrawler.py [username]
-python unfinishedgraphmaker.py playlists.pyfile
-python unfinishedpathfinder.py graph.pyfile
+1. pip install spotipy
+2. export environment variables to authenticate account
+3. python unfinishedcrawler.py [username]
+4. python unfinishedgraphmaker.py playlists.pyfile
+5. python unfinishedpathfinder.py graph.pyfile
