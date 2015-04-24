@@ -6,12 +6,17 @@
 
 import collections
 import sys
+import pickle
 
-#if len(sys.argv) == 2:
-#    user_input = sys.argv[1]
-#else:
-#    print "usage: python unfinishedpathfinder.py [graph.csv]"
-#    sys.exit()
+if len(sys.argv) == 2:
+    user_input = sys.argv[1]
+else:
+    print "usage: python unfinishedpathfinder.py [graph.csv]"
+    sys.exit()
+
+picklefile = open(user_input, 'rb')
+user_graph = pickle.load(picklefile)
+picklefile.close()
 
 testgraph = {
     'a': {
@@ -29,7 +34,7 @@ testgraph = {
         },
     'd': {
         'a': 1
-        }    
+        }
 }
 
 def create_dist(graph):
@@ -46,12 +51,12 @@ def create_path(graph):
 
 def create_songlist(graph):
     songlist = []
-    for song in testgraph:
+    for song in graph:
         songlist.append(song)
     return songlist
 
 # for testing
-print create_songlist(testgraph)
+print create_songlist(user_graph)
 songlist = create_songlist(testgraph)
 
 def pathfinder(graph):

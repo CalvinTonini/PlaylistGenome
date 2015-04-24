@@ -3,6 +3,7 @@
 import sys
 import csv
 import json
+import pickle
 
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
@@ -24,6 +25,7 @@ with open(user_input) as csvfile:
         for song in row:
             playlist.append(song)
         playlists.append(playlist)
+csvfile.close()
 
 for playlist in playlists:
     for song in playlist:
@@ -46,4 +48,7 @@ for playlist in playlists:
                 else:
                     output_graph[song][other_song] = 1.0
 # print output_graph
-print json.dumps(output_graph, sort_keys=True, indent=4, separators=(',', ': '))
+# print json.dumps(output_graph, sort_keys=True, indent=4, separators=(',', ': '))
+output_file = open('graph.pyfile', 'wb')
+pickle.dump(output_graph, output_file)
+output_file.close()

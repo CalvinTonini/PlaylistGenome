@@ -60,6 +60,7 @@ if __name__ == '__main__':
             outwrite = csv.writer(csvfile)
             for playlist in output:
                 outwrite.writerow(playlist)
+        csvfile.close()
         print visited
         print len(output)
 
