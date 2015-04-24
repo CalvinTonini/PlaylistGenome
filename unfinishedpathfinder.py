@@ -77,18 +77,6 @@ def pathfinder(graph):
     f = finder(dist,path)
     return f
 
-def generate_path(s1,s2):
-    g = pathfinder(user_graph)
-    dist = g.dist
-    path = g.path
-    if path[songlist.index(s1)][songlist.index(s2)] == "null":
-        return []
-    final_path = [s1]
-    while s1 != s2:
-        s1 = path[songlist.index(s1)][songlist.index(s2)]
-        final_path.append(s1)
-    print final_path
-
 songlist = create_songlist(user_graph)
 h = pathfinder(user_graph)
 h1 = h.dist
