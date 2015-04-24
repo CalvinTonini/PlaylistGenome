@@ -93,5 +93,8 @@ def generate_path(s1,s2):
         final_path.append(s1)
     print final_path
 
-pathfinder(user_graph)
-generate_path(song1_input,song2_input)
+f = pathfinder(user_graph)
+
+output_file = open('path.pyfile', 'wb')
+pickle.dump(f, output_file)
+output_file.close()
