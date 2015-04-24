@@ -2,6 +2,8 @@
 # returns a list of lists, where the interior lists are all the track IDs
 # within each playlist
 
+# address unicodeencodeerror?"
+
 import sys
 import os
 import spotipy
