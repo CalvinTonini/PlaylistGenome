@@ -9,6 +9,7 @@ import os
 import spotipy
 import spotipy.util as util
 import csv
+import pickle
 
 frontier = []
 visited = []
@@ -63,9 +64,9 @@ if __name__ == '__main__':
 #             for playlist in output:
 #                 outwrite.writerow(playlist)
 #         csvfile.close()
-        outfile = open('platlists.pyfile', wb)
+        outfile = open('playlists.pyfile', 'wb')
         pickle.dump(output, outfile)
-        outputfile.close()
+        outfile.close()
         print visited
         print len(output)
 
