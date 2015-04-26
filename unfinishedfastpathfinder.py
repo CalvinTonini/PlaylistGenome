@@ -73,11 +73,15 @@ def pathfinder(graph):
             if songlist[j_actual] in graph[songlist[i]]:
                 dist[i][j_actual] = graph[songlist[i]][songlist[j_actual]]
                 dist[j_actual][i] = graph[songlist[i]][songlist[j_actual]]
-                path[i][j_actual] = songlist[j_actual]
-                path[j_actual][i] = songlist[i]
+                path[i][j_actual] = j_actual
+                path[j_actual][i] = i
     for i, d_i in enumerate(work_dist):
         for j, d_j in enumerate(work_dist[i]):
+            if j == i:
+                continue
             for k, d_k in enumerate(work_dist):
+                if k == i or k == j:
+                    continue
                 i_actual = (i + 1)
                 j_actual = (j + i + 1)
                 if dist[i][k] + dist[k][j_actual] < dist[i][j_actual]:

@@ -18,13 +18,15 @@ songlist = pickle.load(picklefile)
 picklefile.close()
 
 def generate_path(s1,s2,path):
-    if path[songlist.index(s1)][songlist.index(s2)] == "null":
+    song_1 = songlist.index(s1)
+    song_2 = songlist.index(s2)
+    if path[song_1][song_2] == "null":
         print "No way to get there."
         return []
     final_path = [s1]
-    while s1 != s2:
-        s1 = path[songlist.index(s1)][songlist.index(s2)]
-        final_path.append(s1)
+    while song_1 != song_2:
+        song_1 = path[song_1][song_2]
+        final_path.append(songlist[song_1])
     print final_path
 
 generate_path(first_song,second_song,user_path)
