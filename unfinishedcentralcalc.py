@@ -1,19 +1,22 @@
 import sys
 import pickle
 
-picklefile = open("dist.pyfile", 'rb')
-dist = pickle.load(picklefile)
-picklefile.close()
-picklefile = open("path.pyfile", 'rb')
-path = pickle.load(picklefile)
-picklefile.close()
-picklefile = open("songlist.pyfile", 'rb')
-songlist = pickle.load(picklefile)
-picklefile.close()
-
 if len(sys.argv) != 4:
     print "usage: python unfinishedcentralcalc.py dist.pyfile path.pyfile songlist.pyfile"
     sys.exit()
+user_input_1 = sys.argv[1]
+user_input_2 = sys.argv[2]
+user_input_3 = sys.argv[3]
+
+picklefile = open(user_input_1, 'rb')
+dist = pickle.load(picklefile)
+picklefile.close()
+picklefile = open(user_input_2, 'rb')
+path = pickle.load(picklefile)
+picklefile.close()
+picklefile = open(user_input_3, 'rb')
+songlist = pickle.load(picklefile)
+picklefile.close()
 
 def close_centrality_0():
     centrality = [0.0] * len(dist)
@@ -79,4 +82,4 @@ def between_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-close_centrality_2()
+between_centrality()

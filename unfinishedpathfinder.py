@@ -17,7 +17,7 @@ user_graph = pickle.load(picklefile)
 picklefile.close()
 
 # sample graph for testing
-# testgraph = {
+# user_graph = {
 #     'a': {
 #         'b': 0.5,
 #         'c': 1,
@@ -25,16 +25,18 @@ picklefile.close()
 #         },
 #     'b': {
 #         'a': 0.5,
-#         'c': 1
+#         'c': .25,
+#         'd': 2
 #         },
 #     'c': {
 #         'a': 1,
-#         'b': 1
+#         'b': .25
 #         },
 #     'd': {
-#         'a': 1
+#         'a': 1,
+#         'b': 2
 #         }
-# }
+#     }
 
 def create_dist(graph):
     dist = []
@@ -64,15 +66,15 @@ def pathfinder(graph):
         for j, d_j in enumerate(dist):
             if songlist[j] in graph[songlist[i]]:
                 dist[i][j] = graph[songlist[i]][songlist[j]]
-                path[i][j] = songlist[j]
+                path[i][j] = j
     for i, d_i in enumerate(dist):
         for j, d_j in enumerate(dist):
             for k, d_k in enumerate(dist):
-                if i == j or i == k or j == k:
+                if i == k or j == k or i == j:
                     continue
-                if dist[i][j] + dist[j][k] < dist[i][k]:
-                    dist[i][k] = dist[i][j] + dist[j][k]
-                    path[i][k] = path[i][j]
+                if dist[i][k] + dist[k][j] < dist[i][j]:
+                    dist[i][j] = (dist[i][k] + dist[k][j])
+                    path[i][j] = path[i][k]
     finder = collections.namedtuple('finder',['dist','path'])
     f = finder(dist,path)
     return f

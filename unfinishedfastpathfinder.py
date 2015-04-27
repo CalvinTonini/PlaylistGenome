@@ -15,6 +15,14 @@ else:
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
+# picklefile = open(user_input_1, 'rb')
+# songlist = pickle.load(picklefile)
+# picklefile.close()
+
+# user_input_1 = sys.argv[1]
+# picklefile = open(user_input_1, 'rb')
+# songlist = pickle.load(picklefile)
+# picklefile.close()
 
 # sample graph for testing
 # user_graph = {
@@ -25,16 +33,24 @@ picklefile.close()
 #         },
 #     'b': {
 #         'a': 0.5,
-#         'c': 1
+#         'c': .25,
+#         'd': 2
 #         },
 #     'c': {
 #         'a': 1,
-#         'b': 1
+#         'b': .25
 #         },
 #     'd': {
-#         'a': 1
+#         'a': 1,
+#         'b': 2
 #         }
-# }
+#     }
+
+def create_songlist(graph):
+    songlist = []
+    for song in graph:
+        songlist.append(song)
+    return songlist
 
 def create_dist(graph):
     dist = []
@@ -54,12 +70,6 @@ def create_output_dist(graph):
         dist.append([float("inf")] * (len(graph)))
     return dist
 
-def create_songlist(graph):
-    songlist = []
-    for song in graph:
-        songlist.append(song)
-    return songlist
-
 # for testing:
 # print create_songlist(user_graph)
 
@@ -69,7 +79,7 @@ def pathfinder(graph):
     path = create_path(graph)
     for i, d_i in enumerate(work_dist):
         for j, d_j in enumerate(work_dist[i]):
-            j_actual = j + i + 1
+            j_actual = (j + i + 1)
             if songlist[j_actual] in graph[songlist[i]]:
                 dist[i][j_actual] = graph[songlist[i]][songlist[j_actual]]
                 dist[j_actual][i] = graph[songlist[i]][songlist[j_actual]]
@@ -77,12 +87,12 @@ def pathfinder(graph):
                 path[j_actual][i] = i
     for i, d_i in enumerate(work_dist):
         for j, d_j in enumerate(work_dist[i]):
-            if j == i:
+            j_actual = (j + i + 1)
+            if j_actual == i:
                 continue
             for k, d_k in enumerate(work_dist):
-                if k == i or k == j:
+                if k == i or k == j_actual:
                     continue
-                i_actual = (i + 1)
                 j_actual = (j + i + 1)
                 if dist[i][k] + dist[k][j_actual] < dist[i][j_actual]:
                     dist[i][j_actual] = dist[i][k] + dist[k][j_actual]
@@ -130,6 +140,6 @@ output_file.close()
 output_file = open('path.pyfile','wb')
 pickle.dump(h2, output_file)
 output_file.close()
-output_file = open('songlist.pyfile','wb')
+output_file = open('songlist.pyfile', 'wb')
 pickle.dump(songlist, output_file)
 output_file.close()

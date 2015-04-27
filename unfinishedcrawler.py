@@ -25,9 +25,18 @@ def crawler():
             for playlist in playlists['items']:
                 if len(output) >= maximum:
                     continue
+#                 if playlist['collaborative'] == "True":
+#                     continue
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
-                    songs = sp.user_playlist_tracks(playlist_owner, playlist['id'], fields="items")
+                    try:
+                        songs = sp.user_playlist_tracks(playlist_owner, playlist['id'], fields="items")
+                    except AttributeError as e: #there is a weird error where some playlist id's are none
+                        if playlist['id'] is None:
+                            continue
+                        else:
+                            print playlist['id']
+                            raise e
                     new_playlist = []
                     for song in songs['items']:
                         new_playlist.append(song['track']['name'])
@@ -58,7 +67,7 @@ if __name__ == '__main__':
         frontier.append(username)
         sp = spotipy.Spotify(auth=token)
         crawler()
-        print output[0]
+#        print output[0]
 #         with open('playlists.csv', 'wb') as csvfile:
 #             outwrite = csv.writer(csvfile)
 #             for playlist in output:
