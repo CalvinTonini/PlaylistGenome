@@ -20,9 +20,11 @@ G.add_nodes_from(user_graph)
 for song, edges in user_graph.iteritems():
     for other_song, weight in edges.iteritems():
         G.add_weighted_edges_from([(song, other_song, weight)])
-print G.nodes()
-print G.edges()
+# print G.nodes()
+# print G.edges()
 # for n,nbrs in G.adjacency_iter():
 #     for nbr,eattr in nbrs.items():
 #         data=eattr['weight']
 #         print('(%s, %s, %.3f)' % (n,nbr,data))
+nx.draw(G)
+plt.show()
