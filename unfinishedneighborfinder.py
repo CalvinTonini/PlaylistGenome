@@ -1,6 +1,8 @@
 # input: graph, reference to a specific node
 # output: list of nearby nodes (int unput to determine number, e.g. top 10)
 
+"""BUG: figure out how to tell users they've entered a song title we don't have. Also, it's not working for King of Anything?"""
+
 import collections
 import sys
 import pickle
@@ -17,7 +19,7 @@ else:
     print "usage: python unfinishedneighborfinder.py graph.pyfile 'song' [number]"
     sys.exit()
 
-picklefile = open(user_input_1, 'rb')
+picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
@@ -60,7 +62,7 @@ def neighbor_finder(s,n):
     while len(neighbors) < n:
         closest = None
         if len(user_graph[s]) == 0:
-                print neighbors
+                return neighbors
                 sys.exit()
         for sub_song in user_graph[s]:
             if closest == None:
@@ -71,5 +73,6 @@ def neighbor_finder(s,n):
                 closest = sub_song
         neighbors.append(closest)
         del user_graph[s][closest]
+    return neighbors
         
-neighbor_finder(song_name,maximum)
+print neighbor_finder(song_name,maximum)
