@@ -9,7 +9,7 @@ import pickle
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
 else:
-    print "usage: python unfinishedpathfinder.py [graph.csv]"
+    print "usage: python unfinishedpathfinder.py graph.pyfile"
     sys.exit()
 
 picklefile = open(user_input, 'rb')
