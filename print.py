@@ -12,5 +12,5 @@ picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
-
-print user_graph[60]
+for each in user_graph[750]:
+    print each
