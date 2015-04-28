@@ -1,9 +1,6 @@
 # input: graph, reference to a specific node
 # output: list of nearby nodes (int unput to determine number, e.g. top 10)
 
-"""BUG: figure out how to tell users they've entered a song title we don't have. Also, it's not working for King of Anything?"""
-
-import collections
 import sys
 import pickle
 
@@ -58,6 +55,9 @@ picklefile.close()
 
 # simple implementation: take a node, compare every weight against each other, returning the top x nodes with the heighest edge weight values
 def neighbor_finder(s,n):
+    if s not in user_graph:
+        print "We don't have that song, sorry!"
+        sys.exit()
     neighbors = []
     while len(neighbors) < n:
         closest = None
