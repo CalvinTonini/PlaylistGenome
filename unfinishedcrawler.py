@@ -25,8 +25,6 @@ def crawler():
             for playlist in playlists['items']:
                 if len(output) >= maximum:
                     continue
-#                 if playlist['collaborative'] == "True":
-#                     continue
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
                     try:
