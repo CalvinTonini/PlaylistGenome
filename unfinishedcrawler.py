@@ -17,7 +17,7 @@ output = []
 
 def crawler():
     while len(frontier) > 0 and len(output) < maximum:
-        current_user = frontier.pop()
+        current_user = frontier.pop(0)
         if current_user in visited:
             continue
         else:
@@ -37,12 +37,36 @@ def crawler():
                             raise e
                     new_playlist = []
                     for song in songs['items']:
-                        new_playlist.append(song['track']['name'])
+                        try:
+                            new_playlist.append(song['track']['name'])
+                        except TypeError as e:
+                            continue
+#                             if song['track']['name'] is 'NoneType':
+#                                 continue
+#                             else:
+#                                 print song['track']['name']
+#                                 raise e
                     output.append(new_playlist)
                     if current_user in visited:
                         continue
                     visited.append(current_user)
-                elif playlist_owner != 'spotify':
+                elif "spotify" in playlist_owner:
+                    continue
+                elif "official" in playlist_owner:
+                    continue
+                elif "music" in playlist_owner:
+                    continue
+                elif "spotlight" in playlist_owner:
+                    continue
+                elif "top" in playlist_owner:
+                    continue
+                elif "records" in playlist_owner:
+                    continue
+                elif ".com" in playlist_owner:
+                    continue
+                elif "games" in playlist_owner:
+                    continue
+                else:
                     if playlist_owner in visited:
                         continue
                     frontier.append(playlist_owner)

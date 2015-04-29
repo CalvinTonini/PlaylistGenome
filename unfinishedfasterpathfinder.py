@@ -2,7 +2,9 @@
 # Input: graph dictionary and two nodes (s1 and s2)
 # Output: list of nodes, ordered on the shortest past from s1 to s2 BUT will only output half a matrix
 
-import collections
+import cProfile
+
+# import collections
 import sys
 import pickle
 
@@ -11,6 +13,10 @@ if len(sys.argv) == 2:
 else:
     print "usage: python unfinishedpathfinder.py [graph.csv]"
     sys.exit()
+
+dist = []
+path = []
+songlist = []
 
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
@@ -74,6 +80,8 @@ def create_output_dist(graph):
 # print create_songlist(user_graph)
 
 def pathfinder(graph):
+    global songlist, dist, path
+    songlist = create_songlist(user_graph)
     dist = create_output_dist(graph)
     path = create_path(graph)
     for i in xrange(len(graph) - 1):
@@ -124,21 +132,23 @@ def pathfinder(graph):
 #                 if dist[k][i_k] + dist[k][j_k] < dist[i][j]:
 #                     dist[i][j] = dist[k][i_k] + dist[k][j_k]
 #                     path[i][j] = path[k][i_k]
-    finder = collections.namedtuple('finder',['dist','path'])
-    f = finder(dist,path)
-    return f
+#     finder = collections.namedtuple('finder',['dist','path'])
+#     f = finder(dist,path)
+#     return f
 
-songlist = create_songlist(user_graph)
-h = pathfinder(user_graph)
-h1 = h.dist
-h2 = h.path
 
-output_file = open('dist.pyfile', 'wb')
-pickle.dump(h1, output_file)
-output_file.close()
-output_file = open('path.pyfile','wb')
-pickle.dump(h2, output_file)
-output_file.close()
-output_file = open('songlist.pyfile', 'wb')
-pickle.dump(songlist, output_file)
-output_file.close()
+# h = pathfinder(user_graph)
+# h1 = h.dist
+# h2 = h.path
+
+    output_file = open('dist.pyfile', 'wb')
+    pickle.dump(dist, output_file)
+    output_file.close()
+    output_file = open('path.pyfile','wb')
+    pickle.dump(path, output_file)
+    output_file.close()
+    output_file = open('songlist.pyfile', 'wb')
+    pickle.dump(songlist, output_file)
+    output_file.close()
+
+cProfile.run("pathfinder(user_graph)")
