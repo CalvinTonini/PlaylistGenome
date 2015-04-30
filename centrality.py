@@ -1,9 +1,19 @@
 import sys
 import pickle
 
-if len(sys.argv) != 4:
-    print "usage: python centrality.py dist.pyfile path.pyfile songlist.pyfile"
+if len(sys.argv) != 5:
+    print "usage: python centrality.py dist.pyfile path.pyfile songlist." + \
+        "pyfile int between 0 and 3"
     sys.exit()
+try:
+    option = int(sys.argv[4])
+except ValueError:
+    print "Please enter an integer!"
+    sys.exit()
+if option < 0 or option > 3:
+    print "Please enter a number between 0 and 3!"
+    sys.exit()
+        
 user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
 user_input_3 = sys.argv[3]
@@ -92,7 +102,15 @@ def between_centrality():
     print songlist[thing]
 
 # call centrality functions here
-close_centrality()
-harmonic_centrality()
-dan_centrality()
-between_centrality()
+if option == 0:
+    print "Bavelas' Centrality"
+    close_centrality()
+elif option == 1:
+    print "Harmonic Centrality"
+    harmonic_centrality()
+elif option == 2:
+    print "Dangalchev's Centrality"
+    dan_centrality()
+else:
+    print "Betweeness Centrality"
+    between_centrality()
