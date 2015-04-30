@@ -1,6 +1,4 @@
-# An implementation of neighbor_finder that uses
-# hoursonglist.pyfile and hourdist.pyfile to compare results with the basic 
-# neighbor_finder.
+# The "more accurate" version of neighborfinder, based on the dist array
 
 import sys
 import pickle
