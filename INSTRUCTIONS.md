@@ -6,4 +6,4 @@
 3. python crawler.py [username] [number]
 4. python graphmaker.py playlists.pyfile
 5. python unfinishedfastpathfinder.py graph.pyfile
-6. python unfinishedcentralcalc.py dist.pyfile path.pyfile songlist.pyfile
+6. python centrality.py dist.pyfile path.pyfile songlist.pyfile
