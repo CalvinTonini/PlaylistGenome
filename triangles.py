@@ -8,7 +8,7 @@ if len(sys.argv) == 3:
     user_input = sys.argv[1]
     song = sys.argv[2]
 else:
-    print "usage: python triangles.py graph.pyfile [song]"
+    print "usage: python triangles.py graph.pyfile 'song'"
     sys.exit()
 
 picklefile = open(user_input, 'rb')
