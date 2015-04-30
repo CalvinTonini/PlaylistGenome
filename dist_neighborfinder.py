@@ -10,12 +10,12 @@ if len(sys.argv) == 5:
     dist_input = sys.argv[2]
     song_name = sys.argv[3]
     try:
-        maximum = int(sys.argv[4])
+        desired = int(sys.argv[4])
     except ValueError:
         print "please enter an integer!"
         sys.exit()
 else:
-    print "usage: python unfinishedneighborfinder.py songlist.pyfile dist.pyfile 'song' [number]"
+    print "usage: python dist_neighborfinder.py songlist.pyfile dist.pyfile 'song' [number]"
     sys.exit()
 
 picklefile = open(songlist_input, 'rb')
@@ -25,17 +25,17 @@ picklefile = open(dist_input, 'rb')
 shortest_dist = pickle.load(picklefile)
 picklefile.close()
 
+neighbors = []
+
 def neighbor_finder(s,n):
     if s not in songlist:
         print "We don't have that song, sorry!"
         sys.exit()
-    neighbors = []
     while len(neighbors) < n:
         closest = None
         j = songlist.index(s)
-        if all( i is float("inf") for i in shortest_dist[j] ):
-                return neighbors
-                sys.exit()
+        if shortest_dist[j].count(float("inf")) == len(shortest_dist[j]):
+            break
         for i, sub_song in enumerate(shortest_dist[j]):
             if closest == None:
                 closest = songlist[i]
@@ -45,6 +45,11 @@ def neighbor_finder(s,n):
                 closest = songlist[i]
         neighbors.append(closest)
         shortest_dist[j][songlist.index(closest)] = float("inf")
-    return neighbors
-        
-print neighbor_finder(song_name,maximum)
+
+neighbor_finder(song_name,desired)
+print neighbors
+# for debugging
+print len(neighbors)
+
+# print shortest_dist[songlist.index("Love On Top")].count(1.0)
+# print shortest_dist[songlist.index(song_name)]

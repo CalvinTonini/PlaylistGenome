@@ -1,6 +1,6 @@
 # input: graph, reference to a specific node
 # output: list of nearby nodes (int unput to determine number, e.g. top 10)
-""" REWRITE AS MIN!!! AND USE COUNT """
+
 import sys
 import pickle
 
