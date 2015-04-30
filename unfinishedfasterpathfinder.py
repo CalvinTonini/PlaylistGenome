@@ -2,8 +2,6 @@
 # Input: graph dictionary and two nodes (s1 and s2)
 # Output: list of nodes, ordered on the shortest past from s1 to s2 BUT will only output half a matrix
 
-import cProfile
-
 # import collections
 import sys
 import pickle
@@ -151,4 +149,4 @@ def pathfinder(graph):
     pickle.dump(songlist, output_file)
     output_file.close()
 
-cProfile.run("pathfinder(user_graph)")
+pathfinder(user_graph)
