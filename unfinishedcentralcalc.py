@@ -82,4 +82,4 @@ def between_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-between_centrality()
+close_centrality_2()

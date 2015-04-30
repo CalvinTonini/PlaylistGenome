@@ -8,8 +8,7 @@ import sys
 import os
 import spotipy
 import spotipy.util as util
-import csv
-import pickle
+import json
 
 frontier = []
 visited = []
@@ -95,9 +94,11 @@ if __name__ == '__main__':
 #             for playlist in output:
 #                 outwrite.writerow(playlist)
 #         csvfile.close()
-        outfile = open('playlists.pyfile', 'wb')
-        pickle.dump(output, outfile)
-        outfile.close()
+#         outfile = open('playlists.pyfile', 'wb')
+#         pickle.dump(output, outfile)
+#         outfile.close()
+        with open('playlists.json', mode = 'w') as f:
+            json.dump(output, f)
         print visited
         print len(output)
 

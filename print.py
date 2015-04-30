@@ -12,5 +12,4 @@ picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
-
-print user_graph[60]
+print len(user_graph["Adorn"])
