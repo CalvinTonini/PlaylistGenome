@@ -19,22 +19,22 @@ picklefile.close()
 # sample graph for testing
 # user_graph = {
 #     'a': {
-#         'b': 0.5,
-#         'c': 1,
-#         'd': 1,
+#         'b': 0.1,
+#         'c': .21,
+#         'd': .301,
 #         },
 #     'b': {
-#         'a': 0.5,
-#         'c': .25,
-#         'd': 2
+#         'a': 0.1,
+#         'c': .4001,
+#         'd': 1
 #         },
 #     'c': {
-#         'a': 1,
-#         'b': .25
+#         'a': .21,
+#         'b': .4001
 #         },
 #     'd': {
-#         'a': 1,
-#         'b': 2
+#         'a': .301,
+#         'b': 1
 #         }
 #     }
 
@@ -84,12 +84,12 @@ h = pathfinder(user_graph)
 h1 = h.dist
 h2 = h.path
 
-output_file = open('dist.pyfile', 'wb')
+output_file = open('dist0.pyfile', 'wb')
 pickle.dump(h1, output_file)
 output_file.close()
-output_file = open('path.pyfile','wb')
+output_file = open('path0.pyfile','wb')
 pickle.dump(h2, output_file)
 output_file.close()
-output_file = open('songlist.pyfile','wb')
+output_file = open('songlist0.pyfile','wb')
 pickle.dump(songlist, output_file)
 output_file.close()

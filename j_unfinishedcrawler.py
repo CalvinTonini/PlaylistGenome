@@ -4,6 +4,8 @@
 
 # address unicodeencodeerror?"
 
+import requests
+from requests.exceptions import HTTPError
 import sys
 import os
 import spotipy
@@ -15,6 +17,7 @@ visited = []
 output = []
 
 def crawler():
+    count = 0
     while len(frontier) > 0 and len(output) < maximum:
         current_user = frontier.pop(0)
         if current_user in visited:
@@ -22,12 +25,17 @@ def crawler():
         else:
             playlists = sp.user_playlists(current_user)
             for playlist in playlists['items']:
+                print count
+                count += 1
                 if len(output) >= maximum:
                     continue
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
                     try:
                         songs = sp.user_playlist_tracks(playlist_owner, playlist['id'], fields="items")
+                    except HTTPError as e:
+                        print playlist['id']
+                        continue
                     except AttributeError as e: #there is a weird error where some playlist id's are none
                         if playlist['id'] is None:
                             continue

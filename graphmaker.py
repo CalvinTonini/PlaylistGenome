@@ -16,6 +16,7 @@ def graphmaker():
     playlists = pickle.load(picklefile)
     picklefile.close()
     for playlist in playlists:
+        playlist = set(playlist)
         for song in playlist:
             if song in output_graph:
                 for other_song in playlist:

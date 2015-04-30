@@ -26,11 +26,11 @@ def crawler():
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
                     try:
-                        songs = 
+                        songs = \
                         sp.user_playlist_tracks(playlist_owner, 
                                                 playlist['id'], fields="items")
-                    """Implemented to screen out an error where playlist id's
-                       are set to None"""
+#                       Implemented to screen out an error where playlist id's
+#                       are set to None
                     except AttributeError as e: 
                         if playlist['id'] is None:
                             continue
