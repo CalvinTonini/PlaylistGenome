@@ -54,7 +54,7 @@ picklefile.close()
 
 # test(song_name,maximum)
 
-# simple implementation: take a node, compare every weight against each other, returning the top x nodes with the heighest edge weight values
+# simple implementation: take a node, compare every weight against each other, returning the top x nodes with the highest edge weight values
 def neighbor_finder(s,n):
     neighbors = []
     while len(neighbors) < n:
@@ -71,5 +71,5 @@ def neighbor_finder(s,n):
                 closest = sub_song
         neighbors.append(closest)
         del user_graph[s][closest]
-        
+
 neighbor_finder(song_name,maximum)
