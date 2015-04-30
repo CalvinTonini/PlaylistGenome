@@ -2,12 +2,13 @@ import sys
 import pickle
 
 if len(sys.argv) == 5:
-    first_song = sys.argv[1]
-    second_song = sys.argv[2]
-    user_input_1 = sys.argv[3]
-    user_input_2 = sys.argv[4]
+    user_input_1 = sys.argv[1]
+    user_input_2 = sys.argv[2]
+    first_song = sys.argv[3]
+    second_song = sys.argv[4]
 else:
-    print "usage: python unfinishedpathfinder.py first_song second_song path.pyfile songlist.pyfile"
+    print "usage: python generatepath.py path.pyfile songlist.pyfile " \
+    + "'song_1' 'song_2'"
     sys.exit()
 
 picklefile = open(user_input_1, 'rb')
@@ -21,7 +22,7 @@ def generate_path(s1,s2,path):
     song_1 = songlist.index(s1)
     song_2 = songlist.index(s2)
     if path[song_1][song_2] == "null":
-        print "No way to get there."
+        print "Sorry, these songs aren't connected."
         return []
     final_path = [s1]
     while song_1 != song_2:

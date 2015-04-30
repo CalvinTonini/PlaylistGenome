@@ -2,7 +2,7 @@ import sys
 import pickle
 
 if len(sys.argv) != 3:
-    print "usage: python unfinishedplaylistneighborfinder.py path.pyfile songlist.pyfile"
+    print "usage: python playlistneighborfinder.py path.pyfile songlist.pyfile"
     sys.exit()
 user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
@@ -19,18 +19,18 @@ limit = True
 while limit:
     s = raw_input("Give me some songs you have on a playlist together: ")
     if s not in songlist:
-        print "We don't have that song. Want to try another song?"
+        print "We don't have that song. Want to try another?"
     else:
         song_list.append(s)
     answer = ""
     while answer != "y" and answer != "n":
         answer = raw_input("Do you want to add another song? y or n: ")
         if answer != "y" and answer != "n":
-            print "Type in y or n!"
+            print "Please type in y or n!"
         if answer == "n":
             limit = False
 
-def generate_path_1(s1,s2):
+def generate_path(s1,s2):
     if path[s1][s2] == "null":
         return []
     final_path = [s1]
@@ -50,7 +50,7 @@ def between_centrality():
             for k, node_2 in enumerate(song_list):
                 if i == k:
                     continue
-                if i in generate_path_1(j,k):
+                if i in generate_path(j,k):
                     value += 1
         centrality[i] = value/(len(path)**2)
     thing = centrality.index(max(centrality))
