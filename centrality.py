@@ -20,6 +20,7 @@ picklefile.close()
 
 # Basic closeness centrality, based off Bavelas's definition of closeness,
 # (i.e. closeness is the reciprocal of farness)
+# Not the best definition to use
 def close_centrality():
     centrality = [0.0] * len(dist)
     for i, song in enumerate(dist):

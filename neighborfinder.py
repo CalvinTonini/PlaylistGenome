@@ -13,7 +13,8 @@ if len(sys.argv) == 5:
         print "please enter an integer!"
         sys.exit()
 else:
-    print "usage: python dist_neighborfinder.py songlist.pyfile dist.pyfile 'song' [number]"
+    print "usage: python neighborfinder.py songlist.pyfile dist.pyfile " \
+    + "'song' [number]"
     sys.exit()
 
 picklefile = open(songlist_input, 'rb')
@@ -37,7 +38,8 @@ def neighbor_finder(s,n):
         for i, sub_song in enumerate(shortest_dist[j]):
             if closest == None:
                 closest = songlist[i]
-            elif shortest_dist[j][i] > shortest_dist[j][songlist.index(closest)]:
+            elif shortest_dist[j][i] > \
+            shortest_dist[j][songlist.index(closest)]:
                 continue
             else:
                 closest = songlist[i]
