@@ -9,4 +9,5 @@
 6. python centrality.py dist.pyfile path.pyfile songlist.pyfile
 7. python generatepath.py path.pyfile songlist.pyfile 'song_1' 'song_2' 
 8. python neighborfinder.py songlist.pyfile dist.pyfile 'song' [number]
+9. python playlistneighborfinder.py path.pyfile songlist.pyfile
 9. python triangles.py graph.pyfile 'song'
