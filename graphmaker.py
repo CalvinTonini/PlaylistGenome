@@ -1,8 +1,5 @@
 # will take a list of lists, where interior lists are playlists, and make a dict
 
-# for testing speed
-import cProfile
-
 import sys
 import csv
 import pickle
@@ -11,29 +8,13 @@ def graphmaker():
     if len(sys.argv) == 2:
         user_input = sys.argv[1]
     else:
-        print "Sorry, we need a set of playlists to go through"
+        print "usage: python graphmaker.py playlists.pyfile"
         sys.exit()
-
-
-# user_input = [['a','b','c','d'],['d','e','f'],['a','d']]
-
     output_graph = {}
     current_edge = {}
-
-# with open(user_input) as csvfile:
-#     playlists = []
-#     insheet = csv.reader(csvfile)
-#     for row in insheet:
-#         playlist = []
-#         for song in row:
-#             playlist.append(song)
-#         playlists.append(playlist)
-# csvfile.close()
-
     picklefile = open(user_input, 'rb')
     playlists = pickle.load(picklefile)
     picklefile.close()
-
     for playlist in playlists:
         for song in playlist:
             if song in output_graph:
@@ -54,10 +35,8 @@ def graphmaker():
                         continue
                     else:
                         output_graph[song][other_song] = 1.0
-# print output_graph
-# print json.dumps(output_graph, sort_keys=True, indent=4, separators=(',', ': '))
     output_file = open('graph.pyfile', 'wb')
     pickle.dump(output_graph, output_file)
     output_file.close()
 
-cProfile.run('graphmaker()')
+graphmaker()

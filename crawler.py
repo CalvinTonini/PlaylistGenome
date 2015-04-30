@@ -2,8 +2,6 @@
 # returns a list of lists, where the interior lists are all the track IDs
 # within each playlist
 
-# address unicodeencodeerror?"
-
 import sys
 import os
 import spotipy
@@ -28,8 +26,12 @@ def crawler():
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
                     try:
-                        songs = sp.user_playlist_tracks(playlist_owner, playlist['id'], fields="items")
-                    except AttributeError as e: #there is a weird error where some playlist id's are none
+                        songs = 
+                        sp.user_playlist_tracks(playlist_owner, 
+                                                playlist['id'], fields="items")
+                    """Implemented to screen out an error where playlist id's
+                       are set to None"""
+                    except AttributeError as e: 
                         if playlist['id'] is None:
                             continue
                         else:
@@ -41,11 +43,6 @@ def crawler():
                             new_playlist.append(song['track']['name'])
                         except TypeError as e:
                             continue
-#                             if song['track']['name'] is 'NoneType':
-#                                 continue
-#                             else:
-#                                 print song['track']['name']
-#                                 raise e
                     output.append(new_playlist)
                     if current_user in visited:
                         continue
@@ -80,7 +77,7 @@ if __name__ == '__main__':
             print "please enter an integer!"
             sys.exit()
     else:
-        print "usage: python unfinishedcrawler.py [username] [number]"
+        print "usage: python crawler.py [username] [number]"
         sys.exit()
 
     token = util.prompt_for_user_token(username)
@@ -89,12 +86,6 @@ if __name__ == '__main__':
         frontier.append(username)
         sp = spotipy.Spotify(auth=token)
         crawler()
-#        print output[0]
-#         with open('playlists.csv', 'wb') as csvfile:
-#             outwrite = csv.writer(csvfile)
-#             for playlist in output:
-#                 outwrite.writerow(playlist)
-#         csvfile.close()
         outfile = open('playlists.pyfile', 'wb')
         pickle.dump(output, outfile)
         outfile.close()
