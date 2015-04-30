@@ -53,7 +53,7 @@ picklefile.close()
 
 # test(song_name,maximum)
 
-# simple implementation: take a node, compare every weight against each other, returning the top x nodes with the heighest edge weight values
+# simple implementation: take a node, compare every weight against each other, returning the top x nodes with the highest edge weight values
 def neighbor_finder(s,n):
     if s not in user_graph:
         print "We don't have that song, sorry!"
@@ -74,5 +74,4 @@ def neighbor_finder(s,n):
         neighbors.append(closest)
         del user_graph[s][closest]
     return neighbors
-        
 print neighbor_finder(song_name,maximum)
