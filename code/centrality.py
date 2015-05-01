@@ -115,5 +115,5 @@ elif option == 2:
     print "Dangalchev's Centrality"
     dan_centrality()
 else:
-    print "Betweeness Centrality"
+    print "Betweenness Centrality"
     between_centrality()
