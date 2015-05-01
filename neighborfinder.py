@@ -1,8 +1,10 @@
-# The "more accurate" version of neighborfinder, based on the dist array
+# Generates a requested number of songs that are closest to the input song,
+# based on which songs have the strongest weights in the distance matrix.
 
 import sys
 import pickle
 
+# defines what the user enters in the console
 if len(sys.argv) == 5:
     songlist_input = sys.argv[1]
     dist_input = sys.argv[2]
@@ -17,6 +19,7 @@ else:
     + "'song' [number]"
     sys.exit()
 
+# imports pyfiles
 picklefile = open(songlist_input, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()
@@ -26,6 +29,9 @@ picklefile.close()
 
 neighbors = []
 
+# Populates the neighbors list from the closest song to the farthest song.
+# Will continue to run until the requested number of songs is reached, or
+# there are no more songs linked to the input song.
 def neighbor_finder(s,n):
     if s not in songlist:
         print "We don't have that song, sorry!"

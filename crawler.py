@@ -1,4 +1,4 @@
-# crawls playlists, starting from an authenticated user
+# Starting from an authenticated user, crawler.py crawls over playlists and
 # returns a list of lists, where the interior lists are all the track IDs
 # within each playlist
 
@@ -25,12 +25,11 @@ def crawler():
                     continue
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
+                    # screens out an error where playlist IDs are set to None
                     try:
                         songs = \
                         sp.user_playlist_tracks(playlist_owner, 
                                                 playlist['id'], fields="items")
-#                       Implemented to screen out an error where playlist id's
-#                       are set to None
                     except AttributeError as e: 
                         if playlist['id'] is None:
                             continue
@@ -39,8 +38,9 @@ def crawler():
                             raise e
                     new_playlist = []
                     for song in songs['items']:
+                        # screens out songs with non-ASCII characters
                         try:
-                            new_playlist.append(song['track']['name'])
+                            new_playlist.append(song['track']['name'])       
                         except TypeError as e:
                             continue
                     output.append(new_playlist)
@@ -68,6 +68,7 @@ def crawler():
                         continue
                     frontier.append(playlist_owner)
 
+# defines what the user enters in the console
 if __name__ == '__main__':
     if len(sys.argv) == 3:
         username = sys.argv[1]
@@ -80,6 +81,7 @@ if __name__ == '__main__':
         print "usage: python crawler.py [username] [number]"
         sys.exit()
 
+    # allows us to authenticate our account through the Spotify API
     token = util.prompt_for_user_token(username)
 
     if token:
