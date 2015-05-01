@@ -29,7 +29,8 @@
    songs in your graph. This information will be stored as dist.pyfile, 
    path.pyfile, and songlist.pyfile (respectively).
    
-   NOTE: steps 1-4 MUST be completed before executing any of the following code!
+   **NOTE**: steps 1-4 MUST be completed before executing any of the following 
+   code!
 
 5. To run Centrality Algorithms to find the most central song of your graph 
    data structure, enter 'python centrality.py [dist.pyfile] [path.pyfile] 
