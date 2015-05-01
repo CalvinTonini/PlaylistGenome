@@ -106,7 +106,7 @@ def between_centrality():
 
 # associates each possible entered number with a different type of centrality
 if option == 0:
-    print "Bavelas's Centrality"
+    print "Bavelas's Closeness Centrality"
     close_centrality()
 elif option == 1:
     print "Harmonic Centrality"
