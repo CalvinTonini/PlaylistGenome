@@ -104,7 +104,7 @@ def between_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-# associates each number entered by the user with a different type of centrality
+# associates each possible entered number with a different type of centrality
 if option == 0:
     print "Bavelas's Centrality"
     close_centrality()

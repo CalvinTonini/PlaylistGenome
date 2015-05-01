@@ -1,4 +1,4 @@
-# starting from an authenticated user, crawler.py crawls over playlists and
+# Starting from an authenticated user, crawler.py crawls over playlists and
 # returns a list of lists, where the interior lists are all the track IDs
 # within each playlist
 
@@ -25,7 +25,7 @@ def crawler():
                     continue
                 playlist_owner = playlist['owner']['id']
                 if playlist_owner == current_user:
-#                   screens out an error where playlist IDs are set to None
+                    # screens out an error where playlist IDs are set to None
                     try:
                         songs = \
                         sp.user_playlist_tracks(playlist_owner, 
@@ -38,7 +38,7 @@ def crawler():
                             raise e
                     new_playlist = []
                     for song in songs['items']:
-#                       screens out songs with non-ASCII characters
+                        # screens out songs with non-ASCII characters
                         try:
                             new_playlist.append(song['track']['name'])       
                         except TypeError as e:

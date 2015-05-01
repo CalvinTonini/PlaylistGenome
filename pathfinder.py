@@ -1,39 +1,44 @@
 # An implementation of Floyd-Warshall's algorithm between two nodes
-# Input: graph dictionary and two nodes (s1 and s2)
-# Output: list of nodes, ordered on the shortest past from s1 to s2
 
 import collections
 import sys
 import pickle
 
+# defines what the user enters in the console
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
 else:
     print "usage: python unfinishedpathfinder.py graph.pyfile"
     sys.exit()
 
+# imports pyfiles
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
+# a helper function that creates a distance matrix given a graph
 def create_dist(graph):
     dist = []
     for i in range(len(graph)):
         dist.append([float("inf")] * (len(graph)))
     return dist
 
+# a helper function that creates a shortest path matrix given a graph
 def create_path(graph):
     path = []
     for i in range(len(graph)):
         path.append(["null"] * (len(graph)))
     return path
 
+# a helper function that creates a songlist given a graph
 def create_songlist(graph):
     songlist = []
     for song in graph:
         songlist.append(song)
     return songlist
 
+# traverses the graph and updates the distance and path matrices with the 
+# appropriate weights and songs (respectively)
 def pathfinder(graph):
     dist = create_dist(graph)
     path = create_path(graph)
@@ -54,17 +59,18 @@ def pathfinder(graph):
     f = finder(dist,path)
     return f
 
+# splits the output so that it can be saved as separate pyfiles
 songlist = create_songlist(user_graph)
 h = pathfinder(user_graph)
 h1 = h.dist
 h2 = h.path
 
-output_file = open('dist0.pyfile', 'wb')
+output_file = open('dist.pyfile', 'wb')
 pickle.dump(h1, output_file)
 output_file.close()
-output_file = open('path0.pyfile','wb')
+output_file = open('path.pyfile','wb')
 pickle.dump(h2, output_file)
 output_file.close()
-output_file = open('songlist0.pyfile','wb')
+output_file = open('songlist.pyfile','wb')
 pickle.dump(songlist, output_file)
 output_file.close()
