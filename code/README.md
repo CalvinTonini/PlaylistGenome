@@ -32,15 +32,18 @@
    NOTE: steps 1-4 MUST be completed before executing any of the following code!
 
 5. To run Centrality Algorithms to find the most central song of your graph 
-   data structure, enter 'python 
-   centrality.py [dist.pyfile] [path.pyfile] [songlist.pyfile] 
-   [int between 0 and 3]' into the terminal. Replace [dist.pyfile], 
-   [path.pyfile], and [songlist.pyfile] with the names of the pyfiles you want
-   to use (e.g. dist\_ramchris.pyfile, path\_ramchris.pyfile, 
+   data structure, enter 'python centrality.py [dist.pyfile] [path.pyfile] 
+   [songlist.pyfile] [int between 0 and 3]' into the terminal. Replace 
+   [dist.pyfile], [path.pyfile], and [songlist.pyfile] with the names of the 
+   pyfiles you want to use (e.g. dist\_ramchris.pyfile, path\_ramchris.pyfile, 
    songlist\_ramchris.pyfile). Replace [int between 0 and 3] with a single 
    number (either 0, 1, 2, or 3). Each of these numbers refers to a different
-   implementation of centrality within centrality.py (e.g. Closeness Centrality
-   or Betweenness Centrality). 
+   implementation of centrality within centrality.py, as follows:
+   
+   0: Bavelas's Closeness Centrality
+   1: Harmonic Centrality
+   2: Dangalchev's Centrality
+   3: Betweenness Centrality
 
 6. python generatepath.py path.pyfile songlist.pyfile 'song\_1' 'song\_2' 
 
