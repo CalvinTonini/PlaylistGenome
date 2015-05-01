@@ -20,4 +20,4 @@ for other_song in user_graph[song]:
     for other_songs_song in user_graph[other_song]:
         if other_songs_song in user_graph[song]:
             output.append([song, other_song, other_songs_song])
-print output
+return output
