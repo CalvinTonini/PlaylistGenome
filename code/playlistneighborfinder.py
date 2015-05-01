@@ -10,7 +10,7 @@ if len(sys.argv) != 3:
 user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
 
-imports pyfiles
+# imports necessary pyfiles
 picklefile = open(user_input_1, 'rb')
 path = pickle.load(picklefile)
 picklefile.close()
@@ -18,7 +18,7 @@ picklefile = open(user_input_2, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()
 
-# Prompts that guide the user to enter songs
+# Prompts that guide the user to enter song names
 song_list = []
 limit = True
 while limit:
@@ -35,6 +35,8 @@ while limit:
         if answer == "n":
             limit = False
 
+# a helper function that generates a list of songs on the shortest path
+# between two songs (taken from generatepath.py)
 def generate_path(s1,s2):
     if path[s1][s2] == "null":
         return []
@@ -44,7 +46,9 @@ def generate_path(s1,s2):
         final_path.append(s1)
         return final_path
 
-
+# An implementation of Betweenness Centrality that finds the most traversed 
+# song on the shortest path between the entered songs and every other song 
+# (modified from centrality.py)
 def between_centrality():
     centrality = [0.0] * len(path)
     for i, song in enumerate(path):

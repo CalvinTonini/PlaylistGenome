@@ -13,7 +13,7 @@ else:
     print "usage: python networkx_convert.py [graph.pyfile]"
     sys.exit()
 
-# imports pyfiles
+# imports necessary pyfiles
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()

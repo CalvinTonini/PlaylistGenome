@@ -11,7 +11,7 @@ else:
     print "usage: python jsonconverter.py file_name.json"
     sys.exit()
 
-# loads and converts the file
+# loads and converts the json file
 with open(user_input, mode = 'r') as f:
     variable = json.load(f)
 
