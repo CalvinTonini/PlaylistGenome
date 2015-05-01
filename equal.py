@@ -3,7 +3,7 @@ import pickle
 
 
 if len(sys.argv) != 3:
-    print "usage: python unfinishedcentralcalc.py dist.pyfile path.pyfile songlist.pyfile"
+    print "usage: python equal.py [file_1] [file_2]"
     sys.exit()
 user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
