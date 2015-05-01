@@ -1,12 +1,16 @@
+# Finds the song with the highest Betweeness Centrality given multiple songs
+
 import sys
 import pickle
 
+# defines what the user enters in the console
 if len(sys.argv) != 3:
     print "usage: python playlistneighborfinder.py path.pyfile songlist.pyfile"
     sys.exit()
 user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
 
+imports pyfiles
 picklefile = open(user_input_1, 'rb')
 path = pickle.load(picklefile)
 picklefile.close()
@@ -14,12 +18,13 @@ picklefile = open(user_input_2, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()
 
+# Prompts that guide the user to enter songs
 song_list = []
 limit = True
 while limit:
     s = raw_input("Give me some songs you have on a playlist together: ")
     if s not in songlist:
-        print "We don't have that song. Want to try another?"
+        print "We don't have that song."
     else:
         song_list.append(s)
     answer = ""
