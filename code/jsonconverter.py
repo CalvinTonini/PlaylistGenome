@@ -8,7 +8,7 @@ import pickle
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
 else:
-    print "usage: python jsonconverter.py file_name.json"
+    print "usage: python [jsonconverter.py] [file_name.json]"
     sys.exit()
 
 # loads and converts the json file

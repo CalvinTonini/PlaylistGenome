@@ -9,7 +9,7 @@ def graphmaker():
     if len(sys.argv) == 2:
         user_input = sys.argv[1]
     else:
-        print "usage: python graphmaker.py playlists.pyfile"
+        print "usage: python graphmaker.py [playlists.pyfile]"
         sys.exit()
     output_graph = {}
     current_edge = {}

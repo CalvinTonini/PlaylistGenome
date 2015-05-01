@@ -18,11 +18,12 @@ picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
-# uses the weights of the edges to draw the graph
+# creates empty networkx graph, add nodes, and then add weighted edges
 G=nx.Graph()
 G.add_nodes_from(user_graph)
 for song, edges in user_graph.iteritems():
     for other_song, weight in edges.iteritems():
         G.add_weighted_edges_from([(song, other_song, weight)])
+# visualize the graph
 nx.draw(G)
 plt.show()

@@ -12,8 +12,8 @@ if len(sys.argv) == 5:
     first_song = sys.argv[3]
     second_song = sys.argv[4]
 else:
-    print "usage: python generatepath.py path.pyfile songlist.pyfile " \
-    + "'song_1' 'song_2'"
+    print "usage: python generatepath.py [path.pyfile] [songlist.pyfile] " \
+    + "[song_1] [song_2]"
     sys.exit()
 
 # imports necessary pyfiles

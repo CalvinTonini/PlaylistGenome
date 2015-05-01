@@ -6,8 +6,8 @@ import pickle
 
 # defines what the user enters in the console
 if len(sys.argv) != 5:
-    print "usage: python centrality.py dist.pyfile path.pyfile songlist." + \
-        "pyfile [int between 0 and 3]"
+    print "usage: python centrality.py [dist.pyfile] [path.pyfile] [songlist." + \
+        "pyfile] [int between 0 and 3]"
     sys.exit()
 try:
     option = int(sys.argv[4])
