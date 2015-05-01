@@ -2,7 +2,7 @@
 ### Bianca Trombetta, Calvin Tonini, Chris Ramirez
 
 ### Set-Up and Execution Instructions:
-1. To enable crawling over public playlists, enter 'pip install spotipy' into 
+1. To enable crawling over public playlists, enter _pip install spotipy_ into 
    the terminal. The spotipy module allows you to interface with the Spotify API 
    over the network.
    
