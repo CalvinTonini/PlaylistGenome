@@ -57,4 +57,5 @@ for other_song in user_graph[song]:
                 real_output.append([song, other_song, other_songs_song])
 
 desired_index = closeness.index(min(closeness))
+print real_output
 print real_output[desired_index]
