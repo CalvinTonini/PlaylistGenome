@@ -25,7 +25,7 @@ limit = True
 while limit:
     s = raw_input("Give me some songs you have on a playlist together: ")
     if s not in songlist:
-        print "We don't have that song."
+        print "Sorry, we don't have that song."
     else:
         song_list.append(s)
     answer = ""
