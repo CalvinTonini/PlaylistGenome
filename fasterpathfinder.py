@@ -2,7 +2,6 @@
 # Input: graph dictionary and two nodes (s1 and s2)
 # Output: list of nodes, ordered on the shortest past from s1 to s2 BUT will only output half a matrix
 
-# import collections
 import sys
 import pickle
 

@@ -16,28 +16,6 @@ picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
-# sample graph for testing
-# user_graph = {
-#     'a': {
-#         'b': 0.1,
-#         'c': .21,
-#         'd': .301,
-#         },
-#     'b': {
-#         'a': 0.1,
-#         'c': .4001,
-#         'd': 1
-#         },
-#     'c': {
-#         'a': .21,
-#         'b': .4001
-#         },
-#     'd': {
-#         'a': .301,
-#         'b': 1
-#         }
-#     }
-
 def create_dist(graph):
     dist = []
     for i in range(len(graph)):
@@ -55,9 +33,6 @@ def create_songlist(graph):
     for song in graph:
         songlist.append(song)
     return songlist
-
-# for testing:
-# print create_songlist(user_graph)
 
 def pathfinder(graph):
     dist = create_dist(graph)

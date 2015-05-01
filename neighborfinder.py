@@ -48,8 +48,3 @@ def neighbor_finder(s,n):
 
 neighbor_finder(song_name,desired)
 print neighbors
-# for debugging
-print len(neighbors)
-
-# print shortest_dist[songlist.index("Love On Top")].count(1.0)
-# print shortest_dist[songlist.index(song_name)]

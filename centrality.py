@@ -3,7 +3,7 @@ import pickle
 
 if len(sys.argv) != 5:
     print "usage: python centrality.py dist.pyfile path.pyfile songlist." + \
-        "pyfile int between 0 and 3"
+        "pyfile [int between 0 and 3]"
     sys.exit()
 try:
     option = int(sys.argv[4])
@@ -103,7 +103,7 @@ def between_centrality():
 
 # call centrality functions here
 if option == 0:
-    print "Bavelas' Centrality"
+    print "Bavelas's Centrality"
     close_centrality()
 elif option == 1:
     print "Harmonic Centrality"
