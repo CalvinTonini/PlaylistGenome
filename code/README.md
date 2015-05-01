@@ -47,7 +47,14 @@
    * 2 = Dangalchev's Centrality
    * 3 = Betweenness Centrality
 
-6. python generatepath.py path.pyfile songlist.pyfile 'song\_1' 'song\_2' 
+6. To generate a list of all of the songs on the shortest path between two
+   songs, enter _python generatepath.py [path.pyfile] [songlist.pyfile] 
+   [song\_1] [song\_2]_ into the terminal. Replace _[path.pyfile]_ and
+   _[songlist.pyfile]_ with the names of the pyfiles you want to use (e.g.
+   path\_ramchris.pyfile and songlist\_ramchris.pyfile). Replace _[song\_1]_
+   and _[song\_2]_ with the names of two songs in your graph (you can refer
+   to the relevant songlist.pyfile if you want to look at what songs you have!). 
+   These songs _must_ be entered as _strings_ in the terminal.
 
 7. python neighborfinder.py songlist.pyfile dist.pyfile 'song' [number]
 
