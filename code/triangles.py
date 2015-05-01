@@ -55,6 +55,8 @@ for other_song in user_graph[song]:
                 closeness.append(c_value)
                 output.add(triangle)
                 real_output.append([song, other_song, other_songs_song])
-
+if real_output == []:
+    print "Sorry, No Triangles"
+    sys.exit()
 desired_index = closeness.index(min(closeness))
 print real_output[desired_index]
