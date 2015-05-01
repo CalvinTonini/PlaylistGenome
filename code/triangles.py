@@ -36,8 +36,8 @@ picklefile = open(user_songlist, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()
 
-
 closeness = []
+real_output = []
 output = set()
 for other_song in user_graph[song]:
     for other_songs_song in user_graph[other_song]:
@@ -54,8 +54,7 @@ for other_song in user_graph[song]:
                 c_value = dist[s_0][s_1] + dist[s_1][s_2] + dist[s_2][s_0]
                 closeness.append(c_value)
                 output.add(triangle)
+                real_output.append([song, other_song, other_songs_song])
 
 desired_index = closeness.index(min(closeness))
-print desired_index
-print output
-print closeness
+print real_output[desired_index]
