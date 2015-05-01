@@ -1,7 +1,7 @@
-# An implementation of Floyd-Warshall's algorithm between two nodes that also
-# attempts to improve the running time of pathfinder.py by taking advantage
-# of the fact that the distance matrix is symmetric in undirected graphs, 
-# updating both halves of the matrix at the same time.
+# An implementation of Floyd-Warshall's algorithm that also attempts to improve 
+# the running time of pathfinder.py by taking advantage of the fact that the 
+# distance matrix is symmetric in undirected graphs, updating both halves of 
+# the matrix at the same time.
 
 import sys
 import pickle
