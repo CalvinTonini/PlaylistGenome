@@ -67,13 +67,13 @@ def pathfinder(graph):
                     path[i][j_actual] = path[i][k]
                     path[j_actual][i] = path[j_actual][k]
 
-    output_file = open('dist.pyfile', 'wb')
+    output_file = open('dist2.pyfile', 'wb')
     pickle.dump(dist, output_file)
     output_file.close()
-    output_file = open('path.pyfile','wb')
+    output_file = open('path2.pyfile','wb')
     pickle.dump(path, output_file)
     output_file.close()
-    output_file = open('songlist.pyfile', 'wb')
+    output_file = open('songlist2.pyfile', 'wb')
     pickle.dump(songlist, output_file)
     output_file.close()
 

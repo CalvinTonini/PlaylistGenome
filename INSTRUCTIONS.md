@@ -1,4 +1,4 @@
-# set-up instructions:
+# set-up and execution instructions:
 
 1. pip install spotipy
 2. enter exported environment variables into the terminal to authenticate 
