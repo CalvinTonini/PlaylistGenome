@@ -1,4 +1,4 @@
-# visualizer
+# Allows us to visualize the graph structure
 
 import networkx as nx
 import sys
@@ -6,17 +6,19 @@ import collections
 import pickle
 import matplotlib.pyplot as plt
 
+# defines what the user enters in the console
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
 else:
     print "usage: python networkx_convert.py [graph.pyfile]"
     sys.exit()
 
+# imports necessary pyfiles
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
 
-# Do the thing! Score the points!
+# uses the weights of the edges to draw the graph
 G=nx.Graph()
 G.add_nodes_from(user_graph)
 for song, edges in user_graph.iteritems():

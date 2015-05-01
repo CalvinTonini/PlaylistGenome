@@ -19,7 +19,7 @@ else:
     + "'song' [number]"
     sys.exit()
 
-# imports pyfiles
+# imports necessary pyfiles
 picklefile = open(songlist_input, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()

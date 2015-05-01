@@ -16,7 +16,7 @@ else:
     + "'song_1' 'song_2'"
     sys.exit()
 
-# imports pyfiles
+# imports necessary pyfiles
 picklefile = open(user_input_1, 'rb')
 user_path = pickle.load(picklefile)
 picklefile.close()

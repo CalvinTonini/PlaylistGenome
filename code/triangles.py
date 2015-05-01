@@ -1,9 +1,13 @@
-# creates a list of triangles, triangles being lists of three songs that
-# are all mutually connected with each other
+# Creates a list of "triangles," i.e. lists of three songs that
+# are all mutually connected (but not on the same playlist) with each other.
+# Given a song, triangles.py will return the closest triangle containing
+# that song.
 
 import sys
 import pickle
 
+
+# defines what the user enters in the console
 if len(sys.argv) == 6:
     user_input = sys.argv[1]
     song = sys.argv[5]
@@ -15,6 +19,7 @@ else:
     " dist.pyfile 'song'"
     sys.exit()
 
+# imports necessary pyfiles
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
@@ -49,24 +54,6 @@ for other_song in user_graph[song]:
                 c_value = dist[s_0][s_1] + dist[s_1][s_2] + dist[s_2][s_0]
                 closeness.append(c_value)
                 output.add(triangle)
-# for song in user_graph:
-#     for other_song in user_graph[song]:
-#         for other_songs_song in user_graph[other_song]:
-#             if other_songs_song in user_graph[song]:
-#                 triangle = frozenset([other_songs_song, song, other_song])
-#                 flag = False
-#                 for playlist in playlists:
-#                     if triangle.issubset(set(playlist)):
-#                         flag = True
-#                 if flag == False:
-#                     output.add(triangle)
-# closeness = [0.0] * len(output)
-# for i, triangle in enumerate(output):
-#     song_0 = triangle[0]
-#     song_1 = triangle[1]
-#     song_2 = triangle[2]
-#     value = dist[song_0][song_1] + dist[song_1][song_2] + dist[song_2][song_0]
-#     closeness[i] = value
 
 desired_index = closeness.index(min(closeness))
 print desired_index

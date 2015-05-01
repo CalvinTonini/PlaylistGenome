@@ -22,7 +22,7 @@ user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
 user_input_3 = sys.argv[3]
 
-# imports pyfiles
+# imports necessary pyfiles
 picklefile = open(user_input_1, 'rb')
 dist = pickle.load(picklefile)
 picklefile.close()
