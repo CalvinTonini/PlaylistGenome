@@ -66,4 +66,5 @@ for triangle in output:
     real_output.append(triangle)
 
 desired_index = closeness.index(min(closeness))
+print real_output
 print real_output[desired_index]
