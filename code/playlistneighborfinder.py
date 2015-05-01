@@ -63,7 +63,14 @@ def between_centrality():
                 if i in generate_path(j,k):
                     value += 1
         centrality[i] = value/(len(path)**2)
-    thing = centrality.index(max(centrality))
+    flag = True
+    while flag:
+        thing = centrality.index(max(centrality))
+        centrality[thing] = 0
+        if songlist[thing] in song_list:
+            pass
+        else:
+            flag = False
     print songlist[thing]
 
 between_centrality()
