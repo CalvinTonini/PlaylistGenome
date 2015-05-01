@@ -42,10 +42,10 @@
    these numbers refers to a different implementation of centrality within 
    centrality.py, as follows:
    
-   0. Bavelas's Closeness Centrality
-   1. Harmonic Centrality
-   2. Dangalchev's Centrality
-   3. Betweenness Centrality
+   1. 0 = Bavelas's Closeness Centrality
+   2. 1 = Harmonic Centrality
+   3. 2 = Dangalchev's Centrality
+   4. 3 = Betweenness Centrality
 
 6. python generatepath.py path.pyfile songlist.pyfile 'song\_1' 'song\_2' 
 
