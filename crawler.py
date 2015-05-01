@@ -68,6 +68,7 @@ def crawler():
                         continue
                     frontier.append(playlist_owner)
 
+# defines what the user inputs in the console
 if __name__ == '__main__':
     if len(sys.argv) == 3:
         username = sys.argv[1]

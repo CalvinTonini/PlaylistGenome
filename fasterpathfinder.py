@@ -5,6 +5,7 @@
 import sys
 import pickle
 
+# defines what the user inputs in the console
 if len(sys.argv) == 2:
     user_input = sys.argv[1]
 else:

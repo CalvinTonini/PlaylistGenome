@@ -1,8 +1,10 @@
-# Implements several definitions of centrality to find the most central 
+# Implements several definitions of centrality to find the most central song
+# of a given graph structure
 
 import sys
 import pickle
 
+# defines what the user enters in the console
 if len(sys.argv) != 5:
     print "usage: python centrality.py dist.pyfile path.pyfile songlist." + \
         "pyfile [int between 0 and 3]"
@@ -20,6 +22,7 @@ user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
 user_input_3 = sys.argv[3]
 
+# imports pyfiles
 picklefile = open(user_input_1, 'rb')
 dist = pickle.load(picklefile)
 picklefile.close()
@@ -30,9 +33,7 @@ picklefile = open(user_input_3, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()
 
-# Basic closeness centrality, based off Bavelas's definition of closeness,
-# (i.e. closeness is the reciprocal of farness)
-# Not the best definition to use
+# Implementation of Bavelas's Closeness Centrality
 def close_centrality():
     centrality = [0.0] * len(dist)
     for i, song in enumerate(dist):
@@ -46,8 +47,7 @@ def close_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-# harmonic centrality: natural modification of Bavelas's definition.
-# useful for when a graph is not strongly connected (Rochat 2009)
+# Implementation of Harmonic Centrality
 def harmonic_centrality():
     centrality = [0.0] * len(dist)
     for i, song in enumerate(dist):
@@ -61,7 +61,7 @@ def harmonic_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-# Dangalchev's (2006) definition of centrality
+# Implementation of Dangalchev's Centrality
 def dan_centrality():
     centrality = [0.0] * len(dist)
     for i, song in enumerate(dist):
@@ -75,7 +75,8 @@ def dan_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-# a helper function for between_centrality
+# a helper function that generates a list of the songs on the shortest path 
+# between two given songs
 def generate_path(s1,s2):
     if path[s1][s2] == "null":
         return []
@@ -85,8 +86,8 @@ def generate_path(s1,s2):
         final_path.append(s1)
         return final_path
 
-# betweenness centrality: quantifies the number of times a node acts as a 
-# bridge along the shortest path between two nodes
+# Implementation of Betweenness Centrality, that calls the helper function
+# generate_path
 def between_centrality():
     centrality = [0.0] * len(path)
     for i, song in enumerate(path):
@@ -103,7 +104,7 @@ def between_centrality():
     thing = centrality.index(max(centrality))
     print songlist[thing]
 
-# call centrality functions here
+# associates each number entered by the user with a different type of centrality
 if option == 0:
     print "Bavelas's Centrality"
     close_centrality()
