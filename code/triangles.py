@@ -16,7 +16,7 @@ if len(sys.argv) == 6:
     user_songlist = sys.argv[4]
 else:
     print "usage: python triangles.py graph.pyfile playlists.pyfile" + \
-    " dist.pyfile 'song'"
+    " dist.pyfile songlist.pyfile 'song'"
     sys.exit()
 
 # imports necessary pyfiles
