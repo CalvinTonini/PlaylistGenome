@@ -7,7 +7,7 @@ import sys
 import pickle
 
 
-# defines what the user enters in the console
+# parses user arguments, enforce usage
 if len(sys.argv) == 6:
     user_input = sys.argv[1]
     song = sys.argv[5]
@@ -19,7 +19,7 @@ else:
     " dist.pyfile songlist.pyfile 'song'"
     sys.exit()
 
-# imports necessary pyfiles
+# imports necessary pyfiles based on user unput
 picklefile = open(user_input, 'rb')
 user_graph = pickle.load(picklefile)
 picklefile.close()
@@ -36,25 +36,34 @@ picklefile = open(user_songlist, 'rb')
 songlist = pickle.load(picklefile)
 picklefile.close()
 
+# create empty sets and lists
 closeness = []
 real_output = []
 output = set()
+# iterate over all the songs and their songs, to check for triangles
 for other_song in user_graph[song]:
     for other_songs_song in user_graph[other_song]:
         if other_songs_song in user_graph[song]:
             triangle = frozenset([other_songs_song, song, other_song])
             flag = False
+            # check if triangle exists in a one playlist
             for playlist in playlists:
                 if triangle.issubset(set(playlist)):
                     flag = True
             if flag == False:
-                s_0 = songlist.index(other_songs_song)
-                s_1 = songlist.index(song)
-                s_2 = songlist.index(other_song)
-                c_value = dist[s_0][s_1] + dist[s_1][s_2] + dist[s_2][s_0]
-                closeness.append(c_value)
                 output.add(triangle)
-                real_output.append([song, other_song, other_songs_song])
+
+# process unique triangles, output the most reoccuring triangle
+for triangle in output:
+    triangle_list = []
+    for song in triangle:
+        triangle_list.append(song)
+    s_0 = songlist.index(triangle_list[0])
+    s_1 = songlist.index(triangle_list[1])
+    s_2 = songlist.index(triangle_list[2])
+    c_value = dist[s_0][s_1] + dist[s_1][s_2] + dist[s_2][s_0]
+    closeness.append(c_value)
+    real_output.append(triangle)
 
 desired_index = closeness.index(min(closeness))
 print real_output[desired_index]
