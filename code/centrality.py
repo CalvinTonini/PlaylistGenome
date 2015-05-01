@@ -1,5 +1,5 @@
 # Implements several definitions of centrality to find the most central song
-# of a given graph structure
+# of a given graph structure.
 
 import sys
 import pickle
