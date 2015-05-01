@@ -1,3 +1,5 @@
+# Implements several definitions of centrality to find the most central 
+
 import sys
 import pickle
 
