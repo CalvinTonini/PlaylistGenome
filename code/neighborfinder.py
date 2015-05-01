@@ -15,7 +15,7 @@ if len(sys.argv) == 5:
         print "please enter an integer!"
         sys.exit()
 else:
-    print "usage: python neighborfinder.py songlist.pyfile dist.pyfile " \
+    print "usage: python neighborfinder.py [songlist.pyfile] [dist.pyfile] " \
     + "'song' [number]"
     sys.exit()
 

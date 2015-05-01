@@ -5,7 +5,8 @@ import pickle
 
 # defines what the user enters in the console
 if len(sys.argv) != 3:
-    print "usage: python playlistneighborfinder.py path.pyfile songlist.pyfile"
+    print "usage: python playlistneighborfinder.py [path.pyfile] " + \
+    "[songlist.pyfile]"
     sys.exit()
 user_input_1 = sys.argv[1]
 user_input_2 = sys.argv[2]
