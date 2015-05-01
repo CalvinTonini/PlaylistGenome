@@ -54,9 +54,18 @@
    path\_ramchris.pyfile and songlist\_ramchris.pyfile). Replace _[song\_1]_
    and _[song\_2]_ with the names of two songs in your graph (you can refer
    to the relevant songlist.pyfile if you want to look at what songs you have!). 
-   These songs _must_ be entered as _strings_ in the terminal.
+   The song names must be entered as _strings_ in the terminal.
 
-7. python neighborfinder.py songlist.pyfile dist.pyfile 'song' [number]
+7. To generate a list of the closest songs in relation to a given song, enter
+   _python neighborfinder.py [songlist.pyfile] [dist.pyfile] [song] [number]_. 
+   Replace _[songlist.pyfile]_ and _[dist.pyfile]_ with the names of the pyfiles
+   you want to use (e.g. songlist\_ramchris.pyfile and dist\_ramchris.pyfile).
+   Replace _[song]_ with the name of a song in your graph (you can refer to
+   the relevant songlist.pyfile if you want to look at what songs you have!).
+   The song name must be entered as a _string_ in the terminal. Replace
+   _[number]_ with the number of songs you want to return in your generated
+   list. This list will contain your requested number of songs (if possible), 
+   ordered by closeness from the closest song to the farthest.
 
 8. python playlistneighborfinder.py path.pyfile songlist.pyfile
 
