@@ -93,11 +93,13 @@
    you have!). We suggest entering in around 3-4 song names to start.
 
 9. To find a trio of songs that are all connected that aren't on the same
-   playlist together, enter _python triangles.py [graph.pyfile] [song]_ in
+   playlist together, enter _python triangles.py [graph.pyfile]_
+   _[playlists.pyfile] [dist.pyfile] [songlist.pyfile] [song]_ in
    the terminal. Replace _[graph.pyfile]_ with the name of the pyfile you want 
    to use (e.g. graph\_ramchris.pyfile). Replace _[song]_ with the name of a 
    song in your graph (you can refer to the relevant songlist.pyfile if you want
-   to look at what songs you have!). The song name must be entered as a _string_
+   to look at what songs you have!). Also add in the relevant dist.pyfile
+   songlist.pyfile! The song name must be entered as a _string_
    in the terminal. triangles.py returns the closest trio of songs (if 
    possible) containing the requested song. This is a neat way to generate 
    suggestions to create new playlists!
